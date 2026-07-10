@@ -5,6 +5,10 @@ import { products } from "@/server/schema";
 import { eq } from "drizzle-orm";
 
 export async function deleteProduct(productId: string) {
+  if (!db) {
+    return { success: false, error: "Database is not configured" };
+  }
+
   try {
     await db.delete(products).where(eq(products.id, productId));
     return { success: true };

@@ -5,7 +5,7 @@ import type { Adapter } from "next-auth/adapters";
 import { db } from "@/server";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  adapter: DrizzleAdapter(db) as unknown as Adapter,
+  adapter: db ? (DrizzleAdapter(db) as unknown as Adapter) : undefined,
   secret: process.env.AUTH_SECRET,
   session: {
     strategy: "jwt",

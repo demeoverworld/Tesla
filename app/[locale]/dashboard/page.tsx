@@ -36,19 +36,23 @@ export default async function DashboardPage({
     redirect(`/${locale}`);
   }
 
-  const user = await db.query.users.findFirst({
-    where: eq(users.email, email),
-  });
+  const user = db
+    ? await db.query.users.findFirst({
+        where: eq(users.email, email),
+      })
+    : null;
 
   if (user?.role !== "admin") {
     redirect(`/${locale}`);
   }
 
   const createdProducts =
-    currentView === "created" ? await db.select().from(products) : [];
+    currentView === "created" && db
+      ? await db.select().from(products)
+      : [];
 
   let editingProduct = null;
-  if (productId && currentView === "product") {
+  if (productId && currentView === "product" && db) {
     const result = await db.query.products.findFirst({
       where: eq(products.id, productId),
     });

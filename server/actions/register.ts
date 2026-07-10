@@ -9,6 +9,10 @@ import { users } from "@/server/schema";
 type RegisterInput = unknown;
 
 export async function registerUser(input: RegisterInput) {
+	if (!db) {
+		return { error: "Database is not configured" };
+	}
+
 	const parsed = registerSchema.safeParse(input);
 
 	if (!parsed.success) {

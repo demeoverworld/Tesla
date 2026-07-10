@@ -33,6 +33,10 @@ export async function addProduct(
 				: "",
 	};
 
+	if (!db) {
+		return { error: "Database is not configured" };
+	}
+
 	const parsed = productSchema.safeParse(payload);
 
 	if (!parsed.success) {

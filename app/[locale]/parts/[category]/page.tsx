@@ -41,21 +41,23 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
     notFound();
   }
 
-  const parts = await db
-    .select({
-      id: products.id,
-      name: products.name,
-      year: products.year,
-      model: products.model,
-      price: products.price,
-      stock: products.stock,
-      desc: products.desc,
-      photo: products.photo,
-    })
-    .from(products)
-    .where(and(gte(products.year, 2016), lte(products.year, 2026)))
-    .orderBy(asc(products.year))
-    .limit(12);
+  const parts = db
+    ? await db
+        .select({
+          id: products.id,
+          name: products.name,
+          year: products.year,
+          model: products.model,
+          price: products.price,
+          stock: products.stock,
+          desc: products.desc,
+          photo: products.photo,
+        })
+        .from(products)
+        .where(and(gte(products.year, 2016), lte(products.year, 2026)))
+        .orderBy(asc(products.year))
+        .limit(12)
+    : [];
 
   const categoryModelKeys = getCategoryModelKeys(selectedCategory.slug);
   const categoryParts = parts.filter((product) => {

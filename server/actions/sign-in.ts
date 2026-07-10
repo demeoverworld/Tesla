@@ -12,7 +12,7 @@ import { eq } from "drizzle-orm";
 import bcrypt from "bcryptjs";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  adapter: DrizzleAdapter(db),
+  adapter: db ? DrizzleAdapter(db) : undefined,
 
   session: {
     strategy: "database",
@@ -35,6 +35,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       },
 
       async authorize(credentials) {
+        if (!db) return null;
+
         // 1. SAFE EXTRACTION (fixes your TS error)
         const email = credentials?.email;
         const password = credentials?.password;

@@ -7,6 +7,13 @@ export const createProduct = action
   .action(async ({ parsedInput }) => {
     const { name, year, model, price, desc, photo, stock, id } = parsedInput;
 
+    if (!db) {
+      return {
+        error: "Database is not configured",
+        status: 500,
+      };
+    }
+
     try {
       if (id) {
         const currentProduct = await db.query.products.findFirst({
