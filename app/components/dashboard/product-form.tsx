@@ -33,6 +33,8 @@ export function ProductForm({ locale, productId, existingProduct }: ProductFormP
     <form
       ref={formRef}
       action={formAction}
+      method="post"
+      encType="multipart/form-data"
       className="flex flex-col gap-3 text-red-500 pl-15"
     >
       <input type="hidden" name="locale" value={locale} />
