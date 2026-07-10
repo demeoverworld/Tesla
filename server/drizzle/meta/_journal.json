@@ -1,0 +1,48 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1781693258448,
+      "tag": "0000_omniscient_retro_girl",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1782462287562,
+      "tag": "0001_overjoyed_skin",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1782465549571,
+      "tag": "0002_heavy_the_fury",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1782473724477,
+      "tag": "0003_harsh_wong",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1782482399628,
+      "tag": "0004_serious_the_professor",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1782729618411,
+      "tag": "0005_foamy_liz_osborn",
+      "breakpoints": true
+    }
+  ]
+}
