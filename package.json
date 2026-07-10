@@ -5,11 +5,14 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "node start-server.js",
     "lint": "eslint",
     "db:studio": "drizzle-kit studio --config=server/drizzle.config.ts",
     "db:push": "drizzle-kit push --config=server/drizzle.config.ts",
     "db:generate": "drizzle-kit generate --config=server/drizzle.config.ts"
+  },
+  "engines": {
+    "node": ">=20.18.0"
   },
   "dependencies": {
     "@auth/drizzle-adapter": "^1.11.2",
