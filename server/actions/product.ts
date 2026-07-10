@@ -2,6 +2,7 @@
 
 import { db } from "@/server";
 import { products } from "@/server/schema";
+import { saveUploadedPhoto } from "@/server/lib/upload-image";
 import { productSchema } from "@/types/product-schema";
 import { eq } from "drizzle-orm";
 
@@ -17,6 +18,7 @@ export async function addProduct(
 ): Promise<ProductAddState> {
 	const rawPhoto = formData.get("photo");
 	const productId = formData.get("productId");
+	const existingPhoto = formData.get("existingPhoto");
 
 	const payload = {
 		name: formData.get("name"),
@@ -30,6 +32,8 @@ export async function addProduct(
 				? rawPhoto
 				: rawPhoto instanceof File && rawPhoto.size > 0
 				? rawPhoto.name
+				: typeof existingPhoto === "string"
+				? existingPhoto
 				: "",
 	};
 
@@ -49,6 +53,10 @@ export async function addProduct(
 
 	try {
 		const { name, year, model, price, stock, desc, photo } = parsed.data;
+		const photoUrl =
+			rawPhoto instanceof File && rawPhoto.size > 0
+				? await saveUploadedPhoto(rawPhoto)
+				: photo;
 
 		if (productId && typeof productId === "string") {
 			// Update existing product
@@ -61,7 +69,7 @@ export async function addProduct(
 					price,
 					stock,
 					desc,
-					...(photo ? { photo } : {}),
+					...(photoUrl ? { photo: photoUrl } : {}),
 				})
 				.where(eq(products.id, productId));
 
@@ -75,7 +83,7 @@ export async function addProduct(
 				price,
 				stock,
 				desc,
-				photo,
+				photo: photoUrl,
 			});
 
 			return { success: "Product created successfully" };

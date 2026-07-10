@@ -7,7 +7,11 @@ import { users } from "@/server/schema";
 import { eq } from "drizzle-orm";
 import bcrypt from "bcryptjs";
 
+const hasGoogleConfig = Boolean(process.env.AUTH_GOOGLE_ID && process.env.AUTH_GOOGLE_SECRET);
+
 export const { handlers, auth, signIn, signOut } = NextAuth({
+  trustHost: true,
+  secret: process.env.AUTH_SECRET,
   adapter: db ? DrizzleAdapter(db) : undefined,
 
   session: {
@@ -34,11 +38,15 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   },
 
   providers: [
-    Google({
-      clientId: process.env.AUTH_GOOGLE_ID!,
-      clientSecret: process.env.AUTH_GOOGLE_SECRET!,
-      allowDangerousEmailAccountLinking: true,
-    }),
+    ...(hasGoogleConfig
+      ? [
+          Google({
+            clientId: process.env.AUTH_GOOGLE_ID!,
+            clientSecret: process.env.AUTH_GOOGLE_SECRET!,
+            allowDangerousEmailAccountLinking: true,
+          }),
+        ]
+      : []),
     Credentials({
       name: "credentials",
       credentials: {

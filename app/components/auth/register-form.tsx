@@ -75,6 +75,7 @@ export const RegisterForm = () => {
       if (signInResult?.error) {
         setSuccess("Account created successfully. Please log in.");
         form.reset();
+        router.push("/auth/login");
         return;
       }
 

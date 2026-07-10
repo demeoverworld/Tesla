@@ -37,6 +37,7 @@ export function ProductForm({ locale, productId, existingProduct }: ProductFormP
     >
       <input type="hidden" name="locale" value={locale} />
       {productId && <input type="hidden" name="productId" value={productId} />}
+      <input type="hidden" name="existingPhoto" value={existingProduct?.photo || ""} />
 
       <header className="text-[25px]">{productId ? "Edit Product" : "Add Product"}</header>
 
