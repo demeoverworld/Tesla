@@ -6,6 +6,10 @@ import { usePathname } from "next/navigation";
 const contactNumbers = ["599757044", "599704155", "597050500"];
 const email = "Teslaservicetbilisi@gmail.com";
 const extraContacts = ["595900934", "595900934"];
+const extraContactsWithKeys = extraContacts.map((number, index) => ({
+  number,
+  key: `${number}-${index}`,
+}));
 
 export default function Footer() {
   const pathname = usePathname();
@@ -82,9 +86,9 @@ export default function Footer() {
             {email}
           </Link>
 
-          {extraContacts.map((number) => (
+          {extraContactsWithKeys.map(({ number, key }) => (
             <Link
-              key={number}
+              key={key}
               href={`tel:${number}`}
               className="text-sm text-black/55 transition-colors hover:text-black"
             >
