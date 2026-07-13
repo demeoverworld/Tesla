@@ -1,36 +1,18 @@
-import { randomUUID } from "crypto";
-import { mkdir, writeFile } from "fs/promises";
 import { promises as fs } from "fs";
 import path from "path";
 import { NextResponse } from "next/server";
-
-export const uploadDir =
-  process.env.UPLOAD_DIR ?? "/uploads";
-
-export async function saveUploadedPhoto(file: File): Promise<string> {
-  const buffer = Buffer.from(await file.arrayBuffer());
-  const extension = path.extname(file.name) || ".jpg";
-  const fileName = `${Date.now()}-${randomUUID()}${extension}`;
-
-  await mkdir(uploadDir, { recursive: true });
-  await writeFile(path.join(uploadDir, fileName), buffer);
-
-  return `/uploads/${fileName}`;
-}
+import { uploadDir } from "@/server/lib/upload-image";
 
 export async function GET(
-  _: Request,
+  _request: Request,
   { params }: { params: Promise<{ filename: string }> }
 ) {
   try {
     const { filename } = await params;
-
     const filePath = path.join(uploadDir, filename);
-
     const file = await fs.readFile(filePath);
 
     const extension = path.extname(filename).toLowerCase();
-
     const contentTypes: Record<string, string> = {
       ".jpg": "image/jpeg",
       ".jpeg": "image/jpeg",
@@ -47,7 +29,8 @@ export async function GET(
         "Cache-Control": "public, max-age=31536000, immutable",
       },
     });
-  } catch {
+  } catch (error) {
+    console.error("Failed to read upload file:", error);
     return new NextResponse("Image not found", { status: 404 });
   }
 }
