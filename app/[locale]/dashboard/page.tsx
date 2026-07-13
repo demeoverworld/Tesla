@@ -9,6 +9,7 @@ import { products, users } from "@/server/schema";
 import { routing } from "@/i18n/routing";
 import { redirect } from "next/navigation";
 import { ProductForm } from "@/app/components/dashboard/product-form";
+import { reserve } from "@/server/schema";
 import { CreatedProductsList } from "@/app/components/dashboard/created-products-list";
 
 
@@ -50,6 +51,11 @@ export default async function DashboardPage({
   const createdProducts =
     currentView === "created" && db
       ? await db.select().from(products)
+      : [];
+
+  const reserveMessages =
+    currentView === "messages" && db
+      ? await db.select().from(reserve)
       : [];
 
   let editingProduct = null;
@@ -110,9 +116,35 @@ export default async function DashboardPage({
                   <h2 className="mb-4 text-xl font-semibold text-red-600">
                     Messages
                   </h2>
-                  <p className="text-sm text-slate-600">
-                    This is the new Messages section. You can add the message list and details here.
-                  </p>
+
+                  {reserveMessages.length ? (
+                    <div className="grid gap-4">
+                      {reserveMessages.map((message) => (
+                        <div
+                          key={message.id}
+                          className="rounded-lg border border-slate-200 bg-slate-50 p-4"
+                        >
+                          <p className="font-semibold text-slate-900">
+                            {message.name} {message.lastname}
+                          </p>
+                          <p className="text-sm text-slate-600">
+                            {message.email} · {message.phone}
+                          </p>
+                          <p className="mt-2 text-sm text-slate-700">
+                            {message.model} — {message.service}
+                          </p>
+                          <p className="text-sm text-slate-600">
+                            {message.day}, {message.month} at {message.hour}
+                          </p>
+                          <p className="text-sm text-slate-600">
+                            Car year: {message.carYear}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="text-sm text-slate-500">No reserve messages yet.</p>
+                  )}
                 </div>
               ) : (
                 <ProductForm
