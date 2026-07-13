@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BarChart3, Package } from "lucide-react";
+import { BarChart3, Mail, Package } from "lucide-react";
 import { eq } from "drizzle-orm";
 import { notFound } from "next/navigation";
 
@@ -23,7 +23,8 @@ export default async function DashboardPage({
 }: DashboardPageProps) {
   const { locale } = await params;
   const { view, productId } = await searchParams;
-  const currentView = view === "created" ? "created" : "product";
+  const currentView =
+    view === "created" ? "created" : view === "messages" ? "messages" : "product";
 
   if (!routing.locales.includes(locale as (typeof routing.locales)[number])) {
     notFound();
@@ -85,6 +86,16 @@ export default async function DashboardPage({
             >
               Created  <BarChart3 className="size-4" />
             </Link>
+            <Link
+              href={`/${locale}/dashboard?view=messages`}
+              className={`inline-flex items-center gap-2 rounded-md px-3 py-2 text-base font-semibold tracking-wide transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-300 ${
+                currentView === "messages"
+                  ? "bg-red-600 text-white hover:bg-red-700"
+                  : "text-red-600 hover:bg-red-50 hover:text-red-700"
+              }`}
+            >
+              Messages <Mail className="size-4" />
+            </Link>
             </div>
             <div className="w-full pl-10">
               {currentView === "created" ? (
@@ -93,6 +104,15 @@ export default async function DashboardPage({
                     Created Products
                   </h2>
                   <CreatedProductsList products={createdProducts} locale={locale} />
+                </div>
+              ) : currentView === "messages" ? (
+                <div className="rounded-lg border border-red-100 bg-white p-5">
+                  <h2 className="mb-4 text-xl font-semibold text-red-600">
+                    Messages
+                  </h2>
+                  <p className="text-sm text-slate-600">
+                    This is the new Messages section. You can add the message list and details here.
+                  </p>
                 </div>
               ) : (
                 <ProductForm
