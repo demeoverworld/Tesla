@@ -27,7 +27,7 @@ export function PartCard({ product }: PartCardProps) {
 			? product.photo
 			: product.photo.startsWith("/")
 			? product.photo
-			: `/${product.photo}`
+			: `/uploads/${product.photo}`
 		: "/";
 
 	return (
