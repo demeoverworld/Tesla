@@ -5,7 +5,7 @@ import path from "path";
 import { NextResponse } from "next/server";
 
 export const uploadDir =
-  process.env.UPLOAD_DIR ?? "/uploads";
+  process.env.STORAGE_DIR ?? process.env.UPLOAD_DIR ?? "/uploads";
 
 export async function saveUploadedPhoto(file: File): Promise<string> {
   const buffer = Buffer.from(await file.arrayBuffer());
