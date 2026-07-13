@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 
 import { cn } from "@/lib/utils";
  
@@ -22,10 +23,15 @@ export function PartCard({ product }: PartCardProps) {
 		return null;
 	}
 
-	const normalizedPhoto = product.photo?.trim() ?? "";
+	const [loadError, setLoadError] = useState(false);
+	const normalizedPhoto = String(product.photo ?? "")
+		.trim()
+		.replace(/^['"]+|['"]+$/g, "");
 	const photoSrc = normalizedPhoto
 		? normalizedPhoto.startsWith("http")
 			? normalizedPhoto
+			: normalizedPhoto.startsWith("//")
+			? `https:${normalizedPhoto}`
 			: normalizedPhoto.startsWith("/")
 			? normalizedPhoto
 			: normalizedPhoto.startsWith("uploads/")
@@ -38,8 +44,15 @@ export function PartCard({ product }: PartCardProps) {
 	return (
 	  <div className={cn("flex w-full max-w-[16.5rem] flex-col items-center overflow-hidden rounded-[20px] border border-white/10 bg-[linear-gradient(160deg,_rgba(68,0,0,0.95)_0%,_rgba(24,24,24,0.98)_48%,_rgba(6,6,6,1)_100%)] px-3 py-3 text-white shadow-[0_18px_40px_rgba(0,0,0,0.32)] backdrop-blur-sm")}>
 	
-		<img src={photoSrc} alt={product.name} className="h-32 w-full rounded-[14px] border border-white/10 bg-black/30 object-cover" />
-		{!isValidPhotoSrc ? (
+		<img
+			src={photoSrc}
+			alt={product.name}
+			className="h-32 w-full rounded-[14px] border border-white/10 bg-black/30 object-cover"
+			onError={() => setLoadError(true)}
+		/>
+		{loadError ? (
+			<p className="mt-2 text-xs text-red-200">Image failed to load: {photoSrc}</p>
+		) : !isValidPhotoSrc ? (
 			<p className="mt-2 text-xs text-red-200">Invalid photo URL: {photoSrc}</p>
 		) : (
 			<p className="mt-2 text-xs text-white/60 break-all">{photoSrc}</p>
