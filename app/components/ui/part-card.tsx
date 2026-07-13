@@ -51,12 +51,8 @@ export function PartCard({ product }: PartCardProps) {
 			onError={() => setLoadError(true)}
 		/>
 		{loadError ? (
-			<p className="mt-2 text-xs text-red-200">Image failed to load: {photoSrc}</p>
-		) : !isValidPhotoSrc ? (
-			<p className="mt-2 text-xs text-red-200">Invalid photo URL: {photoSrc}</p>
-		) : (
-			<p className="mt-2 text-xs text-white/60 break-all">{photoSrc}</p>
-		)}
+			<p className="mt-2 text-xs text-red-200">Image failed to load.</p>
+		) : null}
 		<div className="mt-3 flex w-full items-center justify-between gap-2">
 			<h2 className="text-[16px] font-semibold uppercase tracking-[0.1em] text-white">{product.name}</h2>
 			<span className="rounded-full border border-red-400/40 bg-red-500 px-2.5 py-1 text-[10px] font-semibold tracking-[0.1em] text-white shadow-[0_8px_20px_rgba(239,68,68,0.25)]">{product.price}$</span>
