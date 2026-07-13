@@ -1,16 +1,40 @@
-import { randomUUID } from "crypto";
-import { mkdir, writeFile } from "fs/promises";
+import { promises as fs } from "fs";
 import path from "path";
+import { NextResponse } from "next/server";
 
-export async function saveUploadedPhoto(file: File): Promise<string> {
-  const bytes = await file.arrayBuffer();
-  const buffer = Buffer.from(bytes);
-  const extension = path.extname(file.name) || ".jpg";
-  const fileName = `${Date.now()}-${randomUUID()}${extension}`;
-  const uploadDir = path.join(process.cwd(), "public", "uploads");
+const uploadDir =
+  process.env.UPLOAD_DIR ?? path.join(process.cwd(), "public", "uploads");
 
-  await mkdir(uploadDir, { recursive: true });
-  await writeFile(path.join(uploadDir, fileName), buffer);
+export async function GET(
+  _: Request,
+  { params }: { params: Promise<{ filename: string }> }
+) {
+  try {
+    const { filename } = await params;
 
-  return `/uploads/${fileName}`;
+    const filePath = path.join(uploadDir, filename);
+
+    const file = await fs.readFile(filePath);
+
+    const extension = path.extname(filename).toLowerCase();
+
+    const contentTypes: Record<string, string> = {
+      ".jpg": "image/jpeg",
+      ".jpeg": "image/jpeg",
+      ".png": "image/png",
+      ".webp": "image/webp",
+      ".gif": "image/gif",
+      ".svg": "image/svg+xml",
+      ".avif": "image/avif",
+    };
+
+    return new NextResponse(file, {
+      headers: {
+        "Content-Type": contentTypes[extension] || "application/octet-stream",
+        "Cache-Control": "public, max-age=31536000, immutable",
+      },
+    });
+  } catch {
+    return new NextResponse("Image not found", { status: 404 });
+  }
 }
