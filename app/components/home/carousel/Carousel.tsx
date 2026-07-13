@@ -25,7 +25,7 @@ export default function Carousel() {
 
   return (
     <section className="w-full bg-white px-4 py-10 sm:px-6 lg:px-12">
-      <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[12px] bg-white p-0 shadow-[0_10px_30px_rgba(0,0,0,0.05)]">
+      <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[12px] bg-white p-0 shadow-[0_10px_30px_rgba(0,0,0,0.05)] transition-all duration-700 ease-in-out">
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-linear-to-r from-white to-transparent" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-linear-to-l from-white to-transparent" />
 
