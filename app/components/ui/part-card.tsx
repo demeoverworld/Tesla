@@ -22,10 +22,18 @@ export function PartCard({ product }: PartCardProps) {
 		return null;
 	}
 
+	const photoSrc = product.photo
+		? product.photo.startsWith("http")
+			? product.photo
+			: product.photo.startsWith("/")
+			? product.photo
+			: `/${product.photo}`
+		: "/";
+
 	return (
 	  <div className={cn("flex w-full max-w-[16.5rem] flex-col items-center overflow-hidden rounded-[20px] border border-white/10 bg-[linear-gradient(160deg,_rgba(68,0,0,0.95)_0%,_rgba(24,24,24,0.98)_48%,_rgba(6,6,6,1)_100%)] px-3 py-3 text-white shadow-[0_18px_40px_rgba(0,0,0,0.32)] backdrop-blur-sm")}>
 	
-		<img src={product.photo} alt={product.name} className="h-32 w-full rounded-[14px] border border-white/10 bg-black/30 object-cover" />
+		<img src={photoSrc} alt={product.name} className="h-32 w-full rounded-[14px] border border-white/10 bg-black/30 object-cover" />
 		<div className="mt-3 flex w-full items-center justify-between gap-2">
 			<h2 className="text-[16px] font-semibold uppercase tracking-[0.1em] text-white">{product.name}</h2>
 			<span className="rounded-full border border-red-400/40 bg-red-500 px-2.5 py-1 text-[10px] font-semibold tracking-[0.1em] text-white shadow-[0_8px_20px_rgba(239,68,68,0.25)]">{product.price}$</span>
