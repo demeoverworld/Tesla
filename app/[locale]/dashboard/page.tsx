@@ -83,7 +83,7 @@ export default async function DashboardPage({
                   : "text-red-600 hover:bg-red-50 hover:text-red-700"
               }`}
             >
-              created   <BarChart3 className="size-4" />
+              Created  <BarChart3 className="size-4" />
             </Link>
             </div>
             <div className="w-full pl-10">

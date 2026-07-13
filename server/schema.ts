@@ -76,3 +76,20 @@ export const products = pgTable("product", {
   desc: text("desc").notNull(),
   photo: text("photo").notNull(),
 });
+
+
+export const reserve = pgTable("reserve", {
+  id: text("id")
+    .primaryKey()
+    .$defaultFn(() => createId()),
+  name: text("name").notNull(),
+  lastname: text("lastname").notNull(),
+  email: text("email").notNull(),
+  phone: text("phone").notNull(),
+  model: text("model").notNull(),
+  hour: text("hour").notNull(),
+  day: text("day").notNull(),
+  month: text("month").notNull(),
+  service: text("service").notNull(),
+  carYear: text("carYear").notNull(),
+});

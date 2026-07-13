@@ -43,6 +43,13 @@
       "when": 1782729618411,
       "tag": "0005_foamy_liz_osborn",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1783948139110,
+      "tag": "0006_lush_diamondback",
+      "breakpoints": true
     }
   ]
 }
