@@ -1,9 +1,22 @@
+import { randomUUID } from "crypto";
+import { mkdir, writeFile } from "fs/promises";
 import { promises as fs } from "fs";
 import path from "path";
 import { NextResponse } from "next/server";
 
 const uploadDir =
   process.env.UPLOAD_DIR ?? path.join(process.cwd(), "public", "uploads");
+
+export async function saveUploadedPhoto(file: File): Promise<string> {
+  const buffer = Buffer.from(await file.arrayBuffer());
+  const extension = path.extname(file.name) || ".jpg";
+  const fileName = `${Date.now()}-${randomUUID()}${extension}`;
+
+  await mkdir(uploadDir, { recursive: true });
+  await writeFile(path.join(uploadDir, fileName), buffer);
+
+  return `/uploads/${fileName}`;
+}
 
 export async function GET(
   _: Request,
