@@ -22,12 +22,15 @@ export function PartCard({ product }: PartCardProps) {
 		return null;
 	}
 
-	const photoSrc = product.photo
-		? product.photo.startsWith("http")
-			? product.photo
-			: product.photo.startsWith("/")
-			? product.photo
-			: `/uploads/${product.photo}`
+	const normalizedPhoto = product.photo?.trim() ?? "";
+	const photoSrc = normalizedPhoto
+		? normalizedPhoto.startsWith("http")
+			? normalizedPhoto
+			: normalizedPhoto.startsWith("/")
+			? normalizedPhoto
+			: normalizedPhoto.startsWith("uploads/")
+			? `/${normalizedPhoto}`
+			: `/uploads/${normalizedPhoto}`
 		: "/";
 
 	const isValidPhotoSrc = photoSrc.startsWith("http") || photoSrc.startsWith("/");
