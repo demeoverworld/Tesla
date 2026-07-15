@@ -33,19 +33,19 @@ export function Hero({ title, subtitle, orderLabel }: HeroProps) {
 				</p>
 <Button
   asChild
-  size="lg"
+  size="sm"
   className="
     /* 1. Base Styles & Typography */
-    group/button relative cursor-pointer overflow-hidden rounded-xl border-none 
-    bg-red-600 px-8 py-6 text-base font-semibold tracking-wide text-white 
-    shadow-[0_4px_20px_rgba(220,38,38,0.3)] 
+    group/button relative cursor-pointer overflow-hidden rounded-lg border-none 
+    bg-red-600 px-4 py-2 text-sm font-semibold tracking-wide text-white 
+    shadow-[0_3px_12px_rgba(220,38,38,0.25)] 
 
     /* 2. Premium Transitions (Custom Cubic Bezier) */
     transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] 
 
     /* 3. Hover & Active States */
-    hover:-translate-y-1 hover:scale-[1.03] hover:bg-red-700 
-    hover:shadow-[0_10px_25px_rgba(220,38,38,0.4)]
+    hover:-translate-y-0.5 hover:scale-[1.01] hover:bg-red-700 
+    hover:shadow-[0_6px_16px_rgba(220,38,38,0.3)]
     active:scale-95 active:translate-y-0
     
     /* 4. Motion Respect */
@@ -55,15 +55,15 @@ export function Hero({ title, subtitle, orderLabel }: HeroProps) {
   <Link href="/reserve" className="relative z-10 flex items-center justify-center gap-3">
     {/* Micro-interaction: The Icon Reveal */}
     <span className="
-      relative flex h-5 w-0 -translate-x-4 items-center justify-center 
+      relative flex h-4 w-0 -translate-x-3 items-center justify-center 
       opacity-0 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] 
-      group-hover/button:w-5 group-hover/button:translate-x-0 group-hover/button:opacity-100
+      group-hover/button:w-4 group-hover/button:translate-x-0 group-hover/button:opacity-100
     ">
       <svg 
         xmlns="http://www.w3.org/2000/svg" 
         viewBox="0 0 20 20" 
         fill="currentColor" 
-        className="h-5 w-5"
+        className="h-4 w-4"
       >
         <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
       </svg>
