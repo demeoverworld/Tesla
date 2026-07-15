@@ -55,15 +55,15 @@ export function Hero({ title, subtitle, orderLabel }: HeroProps) {
   <Link href="/reserve" className="relative z-10 flex items-center justify-center gap-3">
     {/* Micro-interaction: The Icon Reveal */}
     <span className="
-      relative flex h-4 w-0 -translate-x-3 items-center justify-center 
+      relative flex h-5 w-0 -translate-x-3 items-center justify-center 
       opacity-0 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] 
-      group-hover/button:w-4 group-hover/button:translate-x-0 group-hover/button:opacity-100
+      group-hover/button:w-5 group-hover/button:translate-x-0 group-hover/button:opacity-100
     ">
       <svg 
         xmlns="http://www.w3.org/2000/svg" 
         viewBox="0 0 20 20" 
         fill="currentColor" 
-        className="h-4 w-4"
+        className="h-5 w-5"
       >
         <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
       </svg>
