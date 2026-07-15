@@ -12,7 +12,7 @@ export function PartsHero() {
   return (
     <section className="relative h-[90vh] w-full overflow-hidden bg-black text-white">
       <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
-        <h1 className="reveal-hidden reveal-fade-up max-w-4xl text-5xl font-medium tracking-tight sm:text-7xl lg:text-8xl">
+        <h1 className="reveal-hidden reveal-fade-up max-w-4xl text-5xl font-medium tracking-tight mt-3 sm:text-7xl lg:text-8xl">
           Performance <span className="font-light italic text-gray-400">Engineered.</span>
         </h1>
 
