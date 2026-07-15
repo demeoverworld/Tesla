@@ -30,25 +30,14 @@ export function HeroCards() {
               <div className="flex min-w-0 flex-1 flex-col gap-4">
                 <h3 className="text-2xl font-semibold">{card.header}</h3>
                 <p className="text-sm text-white/80 sm:text-base">{card.description}</p>
-              <Button
-  className="
-    rounded-xl
-    bg-gradient-to-r
-    from-red-700
-    via-red-600
-    to-red-500
-    bg-[length:200%]
-    px-7
-    py-6
-    font-semibold
-    text-white
-    transition-all
-    duration-500
-    hover:bg-right
-    hover:shadow-lg
-"
+              <Button 
+  className="group relative isolate w-fit overflow-hidden border border-red-600 bg-red-600 px-6 py-2.5 text-white transition-colors duration-300 
+             /* Hover Background Slide Effect */
+             before:absolute before:inset-0 before:-z-10 before:origin-center before:scale-x-0 before:rounded-[inherit] before:bg-white before:transition-transform before:duration-500 before:ease-[cubic-bezier(0.16,1,0.3,1)] hover:text-red-600 hover:before:scale-x-100 
+             /* Start / Entry Animation via Arbitrary CSS */
+             animate-[fadeInUp_0.6s_ease-out_forwards]"
 >
-  {tHero("shopNow")}
+  <span className="relative z-10">{tHero("shopNow")}</span>
 </Button>
               </div>
               <div className="relative h-40 w-32 shrink-0 overflow-hidden rounded-xl sm:h-44 sm:w-36">
