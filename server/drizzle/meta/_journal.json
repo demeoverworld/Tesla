@@ -50,6 +50,13 @@
       "when": 1783948139110,
       "tag": "0006_lush_diamondback",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1784098886636,
+      "tag": "0007_tired_queen_noir",
+      "breakpoints": true
     }
   ]
 }

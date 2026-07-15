@@ -1,8 +1,9 @@
 "use client";
 
 import { GlobalVideoHero } from "@/app/components/hero/GlobalVideoHero";
+import { addMessage, type MessageActionState } from "@/server/actions/messages";
 import { useTranslations } from "next-intl";
-import { useEffect, useRef, useState } from "react";
+import { useActionState, useEffect, useRef, useState } from "react";
 
 export default function ContactPage() {
   const tContactPage = useTranslations("ContactPage");
@@ -10,6 +11,7 @@ export default function ContactPage() {
   const formSectionRef = useRef<HTMLDivElement | null>(null);
   const [isTextVisible, setIsTextVisible] = useState(false);
   const [isFormVisible, setIsFormVisible] = useState(false);
+  const [state, formAction, pending] = useActionState(addMessage, {} as MessageActionState);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -21,12 +23,6 @@ export default function ContactPage() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-    // Handle form submission here
   };
 
   useEffect(() => {
@@ -87,7 +83,10 @@ export default function ContactPage() {
               isFormVisible ? "translate-x-0 opacity-100" : "translate-x-10 opacity-0"
             }`}
           >
-            <div className="flex flex-col justify-center rounded-[20px] border border-black/19 w-full max-w-125 h-150 m-auto mt-25 mb-5">
+            <form
+              action={formAction}
+              className="flex flex-col justify-center rounded-[20px] border border-black/19 w-full max-w-125 h-150 m-auto mt-25 mb-5"
+            >
               {/* First Box - Top Half */}
               <div className="flex flex-col justify-end items-center w-full h-1/2 p-5 bg-linear-to-br from-[#f9f9f9] to-[#f1f1f1] border-b-2 border-[#eee] space-y-3">
                 <h2 className="text-2xl font-bold mb-4">{tContactPage("contactUs")}</h2>
@@ -131,15 +130,22 @@ export default function ContactPage() {
                   className="outline-none box-border w-62.5 min-h-38.75 px-3.75 py-2.5 text-sm border border-black/15 rounded-[8px] bg-[#fafafa] transition-all duration-300 ease-in-out mb-3"
                 />
 
+                {state?.error ? (
+                  <p className="text-sm text-red-600">{state.error}</p>
+                ) : null}
+                {state?.success ? (
+                  <p className="text-sm text-green-600">{state.success}</p>
+                ) : null}
+
                 <button
                   type="submit"
-                  onClick={handleSubmit}
-                  className="rounded-full bg-red-500 px-6 py-1.5 font-semibold text-white text-sm transition-colors hover:bg-red-600"
+                  disabled={pending}
+                  className="rounded-full bg-red-500 px-6 py-1.5 font-semibold text-white text-sm transition-colors hover:bg-red-600 disabled:cursor-not-allowed disabled:opacity-70"
                 >
-                  {tContactPage("submit")}
+                  {pending ? "Sending..." : tContactPage("submit")}
                 </button>
               </div>
-            </div>
+            </form>
           </div>
         </div>
         </div>

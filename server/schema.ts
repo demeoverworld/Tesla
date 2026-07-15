@@ -93,3 +93,14 @@ export const reserve = pgTable("reserve", {
   service: text("service").notNull(),
   carYear: text("carYear").notNull(),
 });
+
+
+export const messages = pgTable("message", {
+  id: text("id")
+  .primaryKey()
+  .$defaultFn(() => createId()),
+  name: text("name").notNull(),
+  phone: text("phone").notNull(),
+  email: text("email").notNull(),
+  message: text("message").notNull(),
+});
