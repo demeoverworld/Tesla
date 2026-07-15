@@ -41,12 +41,16 @@ export async function addMessage(
     const savedMessage = inserted[0];
 
     if (savedMessage) {
-      await sendContactEmail({
+      const emailResult = await sendContactEmail({
         name: savedMessage.name,
         email: savedMessage.email,
         phone: savedMessage.phone,
         message: savedMessage.message,
       });
+
+      if (!emailResult.success) {
+        console.warn("Contact email was not sent:", emailResult.error);
+      }
     }
 
     return { success: "Message sent successfully" };

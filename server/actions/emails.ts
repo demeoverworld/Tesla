@@ -10,8 +10,6 @@ type ContactEmailPayload = {
   message: string;
 };
 
-const resend = new Resend(process.env.RESEND_API_KEY ?? process.env.RESEND);
-
 export async function sendContactEmail(payload: ContactEmailPayload) {
   const apiKey = process.env.RESEND_API_KEY ?? process.env.RESEND;
 
@@ -19,6 +17,7 @@ export async function sendContactEmail(payload: ContactEmailPayload) {
     return { success: false, error: 'Email service is not configured' };
   }
 
+  const resend = new Resend(apiKey);
   const baseUrl = getBaseURL();
 
   try {
