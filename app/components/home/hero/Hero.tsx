@@ -34,13 +34,27 @@ export function Hero({ title, subtitle, orderLabel }: HeroProps) {
 <Button
   asChild
   size="lg"
-  className="group/button relative cursor-pointer overflow-hidden border border-red-600 bg-red-600 px-8 text-white shadow-md transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:bg-red-700 hover:shadow-lg hover:shadow-red-900/20 active:scale-95 active:translate-y-0"
+  className="
+    group/button relative cursor-pointer overflow-hidden rounded-xl border border-red-500/40 px-8 text-white shadow-lg
+    /* 1. Dynamic Background Changing (Gradient Shift) */
+    bg-gradient-to-r from-red-800 via-red-600 to-red-700 bg-[size:200%_auto] bg-left transition-all duration-500 ease-out 
+    hover:bg-right hover:-translate-y-1 hover:scale-105
+    /* 2. Flashy Red Neon Glow */
+    hover:shadow-[0_0_30px_rgba(239,68,68,0.65)] hover:border-red-400
+    /* 3. Physical Click Feedback */
+    active:scale-95 active:translate-y-0
+    /* 4. Laser / Shimmer Sweeping Light Effect */
+    after:absolute after:top-0 after:-left-[100%] after:h-full after:w-[60%] after:-skew-x-20 
+    after:bg-gradient-to-r after:from-transparent after:via-white/40 after:to-transparent 
+    after:transition-all after:duration-1000 after:ease-[cubic-bezier(0.16,1,0.3,1)]
+    group-hover/button:after:left-[150%]
+  "
 >
-  <Link href="/reserve" className="flex items-center justify-center gap-2">
-    {/* Sliding & Fading Arrow */}
-    <span className="pointer-events-none -ml-4 flex h-5 w-0 -translate-x-3 items-center justify-center opacity-0 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/button:w-5 group-hover/button:translate-x-0 group-hover/button:opacity-100">
+  <Link href="/reserve" className="flex items-center justify-center gap-2.5 font-semibold tracking-wide">
+    {/* Sliding & Fading Glowing Arrow */}
+    <span className="pointer-events-none -ml-5 flex h-5 w-0 -translate-x-4 items-center justify-center opacity-0 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/button:w-6 group-hover/button:translate-x-0 group-hover/button:opacity-100">
       <svg
-        className="h-4 w-4 stroke-white stroke-[2.5]"
+        className="h-5 w-5 stroke-white stroke-[2.5] drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]"
         fill="none"
         viewBox="0 0 24 24"
       >
@@ -53,7 +67,7 @@ export function Hero({ title, subtitle, orderLabel }: HeroProps) {
     </span>
 
     {/* Smooth Nudging Text */}
-    <span className="translate-x-0 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/button:translate-x-1">
+    <span className="translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/button:translate-x-1.5">
       {orderLabel}
     </span>
   </Link>
