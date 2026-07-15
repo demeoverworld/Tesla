@@ -44,7 +44,7 @@ export function PartsHero() {
           </Button>
         </div>
 
-        <div className="reveal-hidden reveal-fade-right stagger-3 absolute bottom-12 hidden w-full max-w-5xl justify-between border-t border-white/10 pt-6 lg:flex">
+        <div className="reveal-hidden reveal-fade-right stagger-3 absolute bottom-6 hidden w-full max-w-5xl justify-between border-t border-white/10 pt-9 lg:flex">
           {categories.map((cat, idx) => (
             <Link
               key={cat}
