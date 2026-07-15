@@ -33,11 +33,10 @@ export function Hero({ title, subtitle, orderLabel }: HeroProps) {
 				</p>
 <Button
   asChild
-  size="sm"
   className="
     /* 1. Base Styles & Typography */
     group/button relative cursor-pointer overflow-hidden rounded-lg border-none 
-    bg-red-600 px-4 py-2 text-sm font-semibold tracking-wide text-white 
+    bg-red-600 px-5 py-3 text-base font-semibold tracking-wide text-white 
     shadow-[0_3px_12px_rgba(220,38,38,0.25)] 
 
     /* 2. Premium Transitions (Custom Cubic Bezier) */
