@@ -31,18 +31,20 @@ export function Hero({ title, subtitle, orderLabel }: HeroProps) {
 				<p className="max-w-2xl text-lg font-bold text-red-500 sm:text-xl md:text-2xl">
 					{subtitle}
 				</p>
-				<Button
-					asChild
-					size="lg"
-					className="cursor-pointer border-red-600 bg-red-600 px-8 text-white transition-transform duration-300 hover:-translate-y-0.5 hover:scale-105 hover:bg-red-700"
-				>
-					<Link href="/reserve">
-						<span className="w-0 -translate-x-1 overflow-hidden opacity-0 transition-all duration-300 group-hover/button:w-4 group-hover/button:translate-x-0 group-hover/button:opacity-100">
-							→
-						</span>
-						<span>{orderLabel}</span>
-					</Link>
-				</Button>
+			<Button
+  asChild
+  size="lg"
+  className="group/button cursor-pointer border-red-600 bg-red-600 px-8 text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:scale-105 hover:bg-red-700 active:scale-95"
+>
+  <Link href="/reserve" className="flex items-center justify-center gap-1">
+    <span className="inline-flex w-0 -translate-x-2 items-center overflow-hidden opacity-0 transition-all duration-300 ease-out group-hover/button:w-5 group-hover/button:translate-x-0 group-hover/button:opacity-100">
+      <span className="text-lg">→</span>
+    </span>
+    <span className="transition-transform duration-300 group-hover/button:translate-x-0.5">
+      {orderLabel}
+    </span>
+  </Link>
+</Button>
 			</div>
 		</section>
 	);
