@@ -35,41 +35,50 @@ export function Hero({ title, subtitle, orderLabel }: HeroProps) {
   asChild
   size="lg"
   className="
-    group/button relative cursor-pointer overflow-hidden rounded-xl border border-red-500/40 px-8 text-white shadow-lg
-    /* 1. Dynamic Background Changing (Gradient Shift) */
-    bg-gradient-to-r from-red-800 via-red-600 to-red-700 bg-[size:200%_auto] bg-left transition-all duration-500 ease-out 
-    hover:bg-right hover:-translate-y-1 hover:scale-105
-    /* 2. Flashy Red Neon Glow */
-    hover:shadow-[0_0_30px_rgba(239,68,68,0.65)] hover:border-red-400
-    /* 3. Physical Click Feedback */
+    /* 1. Base Styles & Typography */
+    group/button relative cursor-pointer overflow-hidden rounded-xl border-none 
+    bg-red-600 px-8 py-6 text-base font-semibold tracking-wide text-white 
+    shadow-[0_4px_20px_rgba(220,38,38,0.3)] 
+
+    /* 2. Premium Transitions (Custom Cubic Bezier) */
+    transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] 
+
+    /* 3. Hover & Active States */
+    hover:-translate-y-1 hover:scale-[1.03] hover:bg-red-700 
+    hover:shadow-[0_10px_25px_rgba(220,38,38,0.4)]
     active:scale-95 active:translate-y-0
-    /* 4. Laser / Shimmer Sweeping Light Effect */
-    after:absolute after:top-0 after:-left-[100%] after:h-full after:w-[60%] after:-skew-x-20 
-    after:bg-gradient-to-r after:from-transparent after:via-white/40 after:to-transparent 
-    after:transition-all after:duration-1000 after:ease-[cubic-bezier(0.16,1,0.3,1)]
-    group-hover/button:after:left-[150%]
+    
+    /* 4. Motion Respect */
+    motion-reduce:transition-none motion-reduce:hover:transform-none
   "
 >
-  <Link href="/reserve" className="flex items-center justify-center gap-2.5 font-semibold tracking-wide">
-    {/* Sliding & Fading Glowing Arrow */}
-    <span className="pointer-events-none -ml-5 flex h-5 w-0 -translate-x-4 items-center justify-center opacity-0 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/button:w-6 group-hover/button:translate-x-0 group-hover/button:opacity-100">
-      <svg
-        className="h-5 w-5 stroke-white stroke-[2.5] drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]"
-        fill="none"
-        viewBox="0 0 24 24"
+  <Link href="/reserve" className="relative z-10 flex items-center justify-center gap-3">
+    {/* Micro-interaction: The Icon Reveal */}
+    <span className="
+      relative flex h-5 w-0 -translate-x-4 items-center justify-center 
+      opacity-0 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] 
+      group-hover/button:w-5 group-hover/button:translate-x-0 group-hover/button:opacity-100
+    ">
+      <svg 
+        xmlns="http://www.w3.org/2000/svg" 
+        viewBox="0 0 20 20" 
+        fill="currentColor" 
+        className="h-5 w-5"
       >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-        />
+        <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
       </svg>
     </span>
 
-    {/* Smooth Nudging Text */}
-    <span className="translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/button:translate-x-1.5">
+    {/* Text logic */}
+    <span className="transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover/button:translate-x-1">
       {orderLabel}
     </span>
+
+    {/* 5. The "Premium Shine" Overlay */}
+    <span className="
+      absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent 
+      transition-transform duration-1000 ease-in-out group-hover/button:translate-x-full
+    " />
   </Link>
 </Button>
 			</div>
