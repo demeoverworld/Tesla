@@ -31,16 +31,29 @@ export function Hero({ title, subtitle, orderLabel }: HeroProps) {
 				<p className="max-w-2xl text-lg font-bold text-red-500 sm:text-xl md:text-2xl">
 					{subtitle}
 				</p>
-			<Button
+<Button
   asChild
   size="lg"
-  className="group/button cursor-pointer border-red-600 bg-red-600 px-8 text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:scale-105 hover:bg-red-700 active:scale-95"
+  className="group/button relative cursor-pointer overflow-hidden border border-red-600 bg-red-600 px-8 text-white shadow-md transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:bg-red-700 hover:shadow-lg hover:shadow-red-900/20 active:scale-95 active:translate-y-0"
 >
-  <Link href="/reserve" className="flex items-center justify-center gap-1">
-    <span className="inline-flex w-0 -translate-x-2 items-center overflow-hidden opacity-0 transition-all duration-300 ease-out group-hover/button:w-5 group-hover/button:translate-x-0 group-hover/button:opacity-100">
-      <span className="text-lg">→</span>
+  <Link href="/reserve" className="flex items-center justify-center gap-2">
+    {/* Sliding & Fading Arrow */}
+    <span className="pointer-events-none -ml-4 flex h-5 w-0 -translate-x-3 items-center justify-center opacity-0 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/button:w-5 group-hover/button:translate-x-0 group-hover/button:opacity-100">
+      <svg
+        className="h-4 w-4 stroke-white stroke-[2.5]"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+        />
+      </svg>
     </span>
-    <span className="transition-transform duration-300 group-hover/button:translate-x-0.5">
+
+    {/* Smooth Nudging Text */}
+    <span className="translate-x-0 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/button:translate-x-1">
       {orderLabel}
     </span>
   </Link>
