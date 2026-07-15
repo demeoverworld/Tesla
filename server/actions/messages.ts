@@ -2,6 +2,7 @@
 
 import { db } from "@/server";
 import { messages } from "@/server/schema";
+import { sendContactEmail } from "@/server/actions/emails";
 import { messageSchema } from "@/types/messages-schema";
 
 export type MessageActionState = {
@@ -36,7 +37,18 @@ export async function addMessage(
   }
 
   try {
-    await db.insert(messages).values(parsed.data);
+    const inserted = await db.insert(messages).values(parsed.data).returning();
+    const savedMessage = inserted[0];
+
+    if (savedMessage) {
+      await sendContactEmail({
+        name: savedMessage.name,
+        email: savedMessage.email,
+        phone: savedMessage.phone,
+        message: savedMessage.message,
+      });
+    }
+
     return { success: "Message sent successfully" };
   } catch (error) {
     return {
