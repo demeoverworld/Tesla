@@ -11,7 +11,7 @@ type ContactEmailPayload = {
 };
 
 export async function sendContactEmail(payload: ContactEmailPayload) {
-  const apiKey = process.env.RESEND_API_KEY ?? process.env.RESEND;
+  const apiKey = process.env.RESEND_API_KEY;
 
   if (!apiKey) {
     return { success: false, error: 'Email service is not configured' };
