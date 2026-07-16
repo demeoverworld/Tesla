@@ -25,7 +25,7 @@ export function HeroCards() {
           {cards.map((card, index) => (
             <div
               key={index}
-              className="pointer-events-auto flex w-full min-w-0 items-center gap-6 rounded-2xl border border-black/10 bg-linear-to-b [--tw-gradient-from:#300] from-[var(--tw-gradient-from)] to-[#0a0a0a] p-6 text-white shadow-sm lg:w-1/2 lg:flex-1"
+              className="pointer-events-auto flex w-full min-w-0 items-center gap-6 rounded-2xl border border-black/10 bg-linear-to-b [--tw-gradient-from:#300] from-[var(--tw-gradient-from)] to-[#0a0a0a] p-6 text-white shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_18px_36px_rgba(0,0,0,0.28)] lg:w-1/2 lg:flex-1"
             >
               <div className="flex min-w-0 flex-1 flex-col gap-4">
                 <h3 className="text-2xl font-semibold">{card.header}</h3>
