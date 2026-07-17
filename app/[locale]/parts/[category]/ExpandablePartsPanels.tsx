@@ -2,6 +2,7 @@
 
 import { PartCard, type PartCardProduct } from "@/app/components/ui/part-card";
 import { useState } from "react";
+import styles from "./ExpandablePartsPanels.module.css";
 
 type ExpandablePartsPanelsProps = {
   products: PartCardProduct[];
@@ -31,22 +32,22 @@ export function ExpandablePartsPanels({
 
   return (
     <div className="mx-auto flex w-full flex-col items-center gap-16 px-4 pb-12 sm:px-6">
-      <div className="flex w-full flex-col items-center">
-        <div className="mb-6">
-          <h1 className="z-10 text-center text-[100px] font-['Tesla'] leading-none text-slate-900">
+      <div className={styles.container}>
+        <div className={styles.title}>
+          <h1>
             {categoryTitle}
           </h1>
         </div>
 
-        <div className="relative flex h-[400px] w-[300px] items-end justify-center overflow-hidden rounded-[20px] border-2 border-[#c6c6c6] bg-[linear-gradient(to_bottom_right,#a90101,#ffffff)] pl-[190px]">
+        <div className={styles.main}>
           <img
             src={categoryImageSrc}
             alt={`${categoryTitle} main`}
-            className="absolute right-0 bottom-0 h-full w-full scale-[1.25] object-contain object-center transition duration-500 ease-out"
+            className={styles.mainImage}
           />
         </div>
 
-        <div className="flex -translate-y-[57%] transition duration-500 ease-out hover:-translate-y-[60%]">
+        <div className={styles.mainCar}>
           <img
             src={categorySideImageSrc}
             alt={`${categoryTitle} side`}
