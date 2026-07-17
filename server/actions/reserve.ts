@@ -3,6 +3,7 @@
 import { db } from "@/server";
 import { reserve } from "@/server/schema";
 import { reserveSchema } from "@/types/reserve-schema";
+import { and, eq } from "drizzle-orm";
 
 export type ReserveActionState = {
   error?: string;
@@ -42,6 +43,29 @@ export async function addReserve(
 
   try {
     const month = new Date().toLocaleString("en-US", { month: "long" });
+
+    const existingReservation = await db
+      .select({ id: reserve.id })
+      .from(reserve)
+      .where(
+        and(
+          eq(reserve.day, parsed.data.day),
+          eq(reserve.hour, parsed.data.hour),
+          eq(reserve.month, month)
+        )
+      )
+      .limit(1);
+
+    if (existingReservation.length > 0) {
+      return {
+        error: "This time slot is already reserved. Please choose another day or hour.",
+        fieldErrors: {
+          day: ["This day and hour is already reserved"],
+          hour: ["This day and hour is already reserved"],
+        },
+      };
+    }
+
     await db.insert(reserve).values({ ...parsed.data, month });
     return { success: "Reservation submitted successfully" };
   } catch (error) {
