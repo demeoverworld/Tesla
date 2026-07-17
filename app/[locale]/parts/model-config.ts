@@ -8,17 +8,17 @@ export const partModelConfig: readonly PartModelConfig[] = [
   {
     slug: "model-x",
     title: "Model X",
-    imageSrc: "/model_X.png",
+    imageSrc: "/model-x.jpg",
   },
   {
     slug: "model-s",
     title: "Model S",
-    imageSrc: "/model_S.png",
+    imageSrc: "/tesla-model-s.jpg",
   },
   {
     slug: "model-3",
     title: "Model 3",
-    imageSrc: "/model_3.png",
+    imageSrc: "/model-3.jpg",
   },
   {
     slug: "model-y",
