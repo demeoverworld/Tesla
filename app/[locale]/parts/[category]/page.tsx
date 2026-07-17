@@ -73,6 +73,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
       <ExpandablePartsPanels
         products={categoryParts}
         categoryImageSrc={selectedCategory.categoryImageSrc}
+        categorySideImageSrc={selectedCategory.categorySideImageSrc}
         categoryTitle={selectedCategory.title}
       />
     </section>
