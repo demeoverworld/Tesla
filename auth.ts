@@ -7,6 +7,12 @@ import { users } from "@/server/schema";
 import { eq } from "drizzle-orm";
 import bcrypt from "bcryptjs";
 
+// Ensure NextAuth builds the correct OAuth callback URL in production.
+// AUTH_URL takes priority; fall back to the RAILWAY env var already in .env.
+if (!process.env.AUTH_URL && process.env.RAILWAY) {
+  process.env.AUTH_URL = process.env.RAILWAY.trim();
+}
+
 const googleClientId = process.env.AUTH_GOOGLE_ID?.trim();
 const googleClientSecret = process.env.AUTH_GOOGLE_SECRET?.trim();
 const authSecret = process.env.AUTH_SECRET?.trim();
