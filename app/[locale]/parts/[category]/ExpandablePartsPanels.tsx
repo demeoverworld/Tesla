@@ -33,24 +33,24 @@ export function ExpandablePartsPanels({
     <div className="mx-auto flex w-full flex-col items-center gap-16 px-4 pb-12 sm:px-6">
       <div className="flex w-full flex-col items-center">
         <div className="mb-6">
-          <h1 className="text-center text-6xl font-semibold tracking-[0.08em] text-slate-900 sm:text-7xl md:text-8xl">
+          <h1 className="z-10 text-center text-[100px] font-['Tesla'] leading-none text-slate-900">
             {categoryTitle}
           </h1>
         </div>
 
-        <div className="relative flex w-[18.75rem] items-end justify-center overflow-hidden rounded-[20px] border-2 border-[#c6c6c6] bg-[linear-gradient(to_bottom_right,#a90101,#ffffff)] pl-[11.875rem] sm:w-[20rem] md:w-[21rem]">
+        <div className="relative flex h-[400px] w-[300px] items-end justify-center overflow-hidden rounded-[20px] border-2 border-[#c6c6c6] bg-[linear-gradient(to_bottom_right,#a90101,#ffffff)] pl-[190px]">
           <img
             src={categoryImageSrc}
             alt={`${categoryTitle} main`}
-            className="h-[20rem] w-auto object-contain translate-y-[9%] transition-transform duration-500 ease-out"
+            className="h-auto w-auto translate-y-[9%] object-contain transition duration-500 ease-out"
           />
         </div>
 
-        <div className="-mt-30 flex transition-transform duration-500 ease-out hover:-translate-y-1">
+        <div className="flex -translate-y-[57%] transition duration-500 ease-out hover:-translate-y-[60%]">
           <img
             src={categorySideImageSrc}
             alt={`${categoryTitle} side`}
-            className="h-[14rem] w-auto object-contain sm:h-[16rem] md:h-[18rem]"
+            className="h-[600px] w-[700px] object-contain"
           />
         </div>
       </div>
