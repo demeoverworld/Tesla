@@ -10,6 +10,7 @@
   font-family: 'Tesla';
   z-index: 10;
   line-height: 1;
+  margin-bottom: 20px;
 }
 
 .main {
@@ -22,21 +23,32 @@
   border-radius: 20px;
   width: 300px;
   height: 400px;
-  padding-left: 190px;
+  padding-left: 0;
   position: relative;
 }
 
 .mainImage {
   object-fit: contain;
-  transform: translateY(9%) scale(1.25);
+  object-position: center bottom;
+  transform: translateY(-18%) scale(1.45) translateX(9%);
   transition: 0.5s ease;
-  width: auto;
+  width: 100%;
+  height: 100%;
+}
+
+.mainImageUp {
+  object-fit: contain;
+  object-position: center bottom;
+  transform: translateY(-35%) scale(1.45) translateX(9%);
+  transition: 0.5s ease;
+  width: 100%;
   height: 100%;
 }
 
 .mainCar {
   display: flex;
   transform: translateY(-57%);
+  margin-bottom: -420px;
   transition: 0.5s ease;
 }
 
@@ -45,7 +57,7 @@
 }
 
 .mainCar img {
-  width: 700px;
+  width: 560px;
   height: 600px;
   object-fit: contain;
 }
@@ -65,7 +77,7 @@
   .main {
     width: 150px;
     height: 250px;
-    padding-left: 190px;
+    padding-left: 0;
   }
 
   .mainImage {

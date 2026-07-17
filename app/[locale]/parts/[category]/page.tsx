@@ -75,6 +75,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         categoryImageSrc={selectedCategory.categoryImageSrc}
         categorySideImageSrc={selectedCategory.categorySideImageSrc}
         categoryTitle={selectedCategory.title}
+        categorySlug={selectedCategory.slug}
       />
     </section>
   );

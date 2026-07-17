@@ -9,6 +9,7 @@ type ExpandablePartsPanelsProps = {
   categoryImageSrc: string;
   categorySideImageSrc: string;
   categoryTitle: string;
+  categorySlug: string;
 };
 
 export function ExpandablePartsPanels({
@@ -16,7 +17,12 @@ export function ExpandablePartsPanels({
   categoryImageSrc,
   categorySideImageSrc,
   categoryTitle,
+  categorySlug,
 }: ExpandablePartsPanelsProps) {
+  const imageUpModels = ["model-s", "model-3", "model-y"];
+  const mainImageClass = imageUpModels.includes(categorySlug)
+    ? styles.mainImageUp
+    : styles.mainImage;
   const [firstExpanded, setFirstExpanded] = useState(false);
   const [secondExpanded, setSecondExpanded] = useState(false);
   const firstPanelProducts = products.filter(
@@ -43,7 +49,7 @@ export function ExpandablePartsPanels({
           <img
             src={categoryImageSrc}
             alt={`${categoryTitle} main`}
-            className={styles.mainImage}
+            className={mainImageClass}
           />
         </div>
 

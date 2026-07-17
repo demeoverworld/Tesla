@@ -1,5 +1,13 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+
+@font-face {
+  font-family: 'Tesla';
+  src: url('/fonts/TESLA.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 @import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
