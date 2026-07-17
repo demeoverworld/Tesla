@@ -8,7 +8,6 @@ export const reserveSchema = z.object({
   model: z.string().min(1, "Model is required"),
   hour: z.string().min(1, "Hour is required"),
   day: z.string().min(1, "Day is required"),
-  month: z.string().min(1, "Month is required"),
   service: z.string().min(1, "Service is required"),
   carYear: z.string().min(1, "Car year is required"),
 });

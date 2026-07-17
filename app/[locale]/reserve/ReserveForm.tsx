@@ -93,22 +93,6 @@ export function ReserveForm() {
           <option value="Sunday">{tReservePage("sunday")}</option>
         </select>
 
-        <select name="month" required className="rounded border border-slate-200 px-3 py-2">
-          <option value="">{tReservePage("selectMonth")}</option>
-          <option value="January">{tReservePage("january")}</option>
-          <option value="February">{tReservePage("february")}</option>
-          <option value="March">{tReservePage("march")}</option>
-          <option value="April">{tReservePage("april")}</option>
-          <option value="May">{tReservePage("may")}</option>
-          <option value="June">{tReservePage("june")}</option>
-          <option value="July">{tReservePage("july")}</option>
-          <option value="August">{tReservePage("august")}</option>
-          <option value="September">{tReservePage("september")}</option>
-          <option value="October">{tReservePage("october")}</option>
-          <option value="November">{tReservePage("november")}</option>
-          <option value="December">{tReservePage("december")}</option>
-        </select>
-
         <select name="service" required className="rounded border border-slate-200 px-3 py-2">
           <option value="">{tReservePage("selectService")}</option>
           <option value="Climate Control Problem">{tReservePage("climateControlProblem")}</option>

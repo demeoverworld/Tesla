@@ -26,7 +26,6 @@ export async function addReserve(
     model: formData.get("model"),
     hour: formData.get("hour"),
     day: formData.get("day"),
-    month: formData.get("month"),
     service: formData.get("service"),
     carYear: formData.get("carYear"),
   };
@@ -42,7 +41,8 @@ export async function addReserve(
   }
 
   try {
-    await db.insert(reserve).values(parsed.data);
+    const month = new Date().toLocaleString("en-US", { month: "long" });
+    await db.insert(reserve).values({ ...parsed.data, month });
     return { success: "Reservation submitted successfully" };
   } catch (error) {
     return { error: error instanceof Error ? error.message : "Failed to save reservation" };
