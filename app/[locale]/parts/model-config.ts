@@ -18,11 +18,11 @@ export const partModelConfig: readonly PartModelConfig[] = [
   {
     slug: "model-3",
     title: "Model 3",
-    imageSrc: "/model-3.jpg",
+    imageSrc: "/model-3.jpeg",
   },
   {
     slug: "model-y",
     title: "Model Y",
-    imageSrc: "/model_Y.png",
+    imageSrc: "/model-y.jpg",
   },
 ];
