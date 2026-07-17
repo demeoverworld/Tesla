@@ -72,7 +72,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
     <section className="mt-45 flex flex-col items-center justify-center">
       <ExpandablePartsPanels
         products={categoryParts}
-        categoryImageSrc={selectedCategory.imageSrc}
+        categoryImageSrc={selectedCategory.categoryImageSrc}
         categoryTitle={selectedCategory.title}
       />
     </section>
