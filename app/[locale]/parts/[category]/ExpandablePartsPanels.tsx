@@ -42,7 +42,7 @@ export function ExpandablePartsPanels({
           <img
             src={categoryImageSrc}
             alt={`${categoryTitle} main`}
-            className="h-auto w-auto translate-y-[9%] object-contain transition duration-500 ease-out"
+            className="absolute right-0 bottom-0 h-full w-full scale-[1.9] object-cover object-center transition duration-500 ease-out"
           />
         </div>
 
