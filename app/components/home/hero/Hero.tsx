@@ -6,10 +6,12 @@ type HeroProps = {
 	title: string;
 	subtitle: string;
 	orderLabel: string;
+  locale: "en" | "ka" | "ru";
 };
 
-export function Hero({ title, subtitle, orderLabel }: HeroProps) {
+export function Hero({ title, subtitle, orderLabel, locale }: HeroProps) {
 	const tHero = useTranslations("Hero");
+  const isCompactLocale = locale === "ka" || locale === "ru";
 
 	return (
 	<section className="relative isolate min-h-screen overflow-hidden">
@@ -36,12 +38,24 @@ export function Hero({ title, subtitle, orderLabel }: HeroProps) {
       </span>
 
       {/* Title with tracking and tighter line height */}
-      <h1 className="text-4xl font-extrabold tracking-tight leading-[1.1] sm:text-5xl md:text-6xl lg:text-7xl">
+      <h1
+        className={`font-extrabold tracking-tight leading-[1.1] ${
+          isCompactLocale
+            ? "text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
+            : "text-4xl sm:text-5xl md:text-6xl lg:text-7xl"
+        }`}
+      >
         {title}
       </h1>
 
       {/* Subtitle softened to neutral-200 for a less harsh, highly elegant contrast */}
-      <p className="max-w-2xl text-lg font-medium text-neutral-200/90 sm:text-xl md:text-2xl leading-relaxed">
+      <p
+        className={`max-w-2xl font-medium text-neutral-200/90 leading-relaxed ${
+          isCompactLocale
+            ? "text-base sm:text-lg md:text-xl"
+            : "text-lg sm:text-xl md:text-2xl"
+        }`}
+      >
         {subtitle}
       </p>
 

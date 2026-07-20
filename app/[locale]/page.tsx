@@ -28,6 +28,7 @@ export default async function LocalePage({ params }: LocalePageProps) {
         title={tHero("title")}
         subtitle={tHero("subtitle")}
         orderLabel={tHero("order")}
+        locale={locale as Locale}
       />
       <HeroCards />
       <InstallNavigation />
