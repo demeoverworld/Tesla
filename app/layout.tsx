@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import { SessionProvider } from "@/app/components/session-provider";
+import getBaseURL from "@/lib/base-url";
 import "./globals.css";
 
 
@@ -21,6 +22,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(getBaseURL()),
   title: "Tesla Service Tbilisi",
   description: "Our certified technicians specialize in diagnosing and repairing Tesla vehicles with precision and care. From electrical systems and battery diagnostics to suspension, brakes, and general maintenance, we use advanced diagnostic tools to restore your vehicle's performance, safety, and reliability.",
   icons: {

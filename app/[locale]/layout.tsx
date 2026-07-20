@@ -61,7 +61,29 @@ export async function generateMetadata({ params }: LocaleLayoutProps): Promise<M
     return SEO_BY_LOCALE.en;
   }
 
-  return SEO_BY_LOCALE[locale as "en" | "ka" | "ru"];
+  const currentLocale = locale as "en" | "ka" | "ru";
+  const currentSeo = SEO_BY_LOCALE[currentLocale];
+
+  return {
+    ...currentSeo,
+    alternates: {
+      canonical: `/${currentLocale}`,
+      languages: {
+        en: "/en",
+        ka: "/ka",
+        ru: "/ru",
+      },
+    },
+    openGraph: {
+      title: typeof currentSeo.title === "string" ? currentSeo.title : undefined,
+      description:
+        typeof currentSeo.description === "string" ? currentSeo.description : undefined,
+      url: `/${currentLocale}`,
+      siteName: "Tesla Service Tbilisi",
+      locale: currentLocale,
+      type: "website",
+    },
+  };
 }
 
 export default async function LocaleLayout({
@@ -80,7 +102,7 @@ export default async function LocaleLayout({
     <NextIntlClientProvider>
       <Navigation locale={locale as "en" | "ka" | "ru"} />
       {children}
-      <Footer />
+      <Footer locale={locale as "en" | "ka" | "ru"} />
     </NextIntlClientProvider>
   );
 }
