@@ -8,6 +8,7 @@ type ExpandablePartsPanelsProps = {
   products: PartCardProduct[];
   categoryImageSrc: string;
   categorySideImageSrc: string;
+  categoryPartsImageSrc: string;
   categoryTitle: string;
   categorySlug: string;
 };
@@ -16,6 +17,7 @@ export function ExpandablePartsPanels({
   products,
   categoryImageSrc,
   categorySideImageSrc,
+  categoryPartsImageSrc,
   categoryTitle,
   categorySlug,
 }: ExpandablePartsPanelsProps) {
@@ -70,7 +72,7 @@ export function ExpandablePartsPanels({
           aria-expanded={firstExpanded}
         >
           <img
-            src={categoryImageSrc}
+            src={categoryPartsImageSrc}
             alt={categoryTitle}
             className="h-auto w-56 transition-transform duration-300 group-hover:scale-[1.03] sm:w-72"
           />
@@ -119,7 +121,7 @@ export function ExpandablePartsPanels({
           aria-expanded={secondExpanded}
         >
           <img
-            src={categoryImageSrc}
+            src={categoryPartsImageSrc}
             alt={categoryTitle}
             className="h-auto w-56 transition-transform duration-300 group-hover:scale-[1.03] sm:w-72"
           />
