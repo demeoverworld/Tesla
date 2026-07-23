@@ -72,7 +72,7 @@ export default function ContactPage() {
               <h3 className="text-xl font-bold">{tContactPage("serviceAreas")}</h3>
               <p className="text-gray-700">{tContactPage("area")}</p>
               <h3 className="text-xl font-bold">{tContactPage("phoneNumber")}</h3>
-              <p className="text-2xl font-bold text-gray-900">595900934</p>
+              <p className="text-2xl font-bold text-gray-900">597970140</p>
             </div>
           </div>
 
