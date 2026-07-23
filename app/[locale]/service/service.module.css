@@ -120,65 +120,141 @@
 /* Mobile responsiveness */
 @media (max-width: 1024px) {
   .serviceContainer {
-    grid-template-columns: 1fr;
-    gap: 40px;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: 28px;
   }
 
   .gallerySide {
-    position: relative;
-    top: 0;
-    height: 400px;
-    margin-top: 20px;
+    position: sticky;
+    top: 84px;
+    height: auto;
+    margin-top: 0;
   }
 
   .imageDisplay {
     aspect-ratio: auto;
-    height: 260px;
+    height: 210px;
+    min-height: 210px;
   }
 
   .contentSide {
-    gap: 40px;
+    gap: 120px;
+    padding: 12px 0;
+  }
+
+  .serviceItem {
+    width: 70%;
+    gap: 12px;
   }
 
   .title {
     font-size: 22px;
+    max-width: 290px;
+    margin-bottom: 12px;
   }
 
   .description {
     font-size: 13px;
+    max-width: 420px;
+  }
+
+  .inlineImage {
+    width: 42%;
   }
 }
 
 @media (max-width: 768px) {
   .serviceContainer {
-    gap: 30px;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    gap: 18px;
   }
 
   .contentSide {
-    gap: 30px;
+    gap: 72px;
+    padding: 8px 0;
+  }
+
+  .serviceItem {
+    width: 88%;
+    gap: 10px;
   }
 
   .inlineImageDisplay {
-    min-height: 260px;
+    min-height: 180px;
   }
 
   .gallerySide {
-    height: 300px;
+    top: 72px;
+    height: auto;
   }
 
   .imageDisplay {
     aspect-ratio: auto;
-    height: 200px;
+    height: 160px;
+    min-height: 160px;
+  }
+
+  .galleryContainer {
+    max-width: 240px;
   }
 
   .title {
-    font-size: 18px;
+    font-size: 15px;
+    max-width: 200px;
+    margin-bottom: 8px;
   }
 
   .description {
-    font-size: 12px;
+    font-size: 10px;
+    line-height: 1.4;
+    max-width: 250px;
   }
 
+  .inlineImage {
+    width: 54%;
+  }
+}
+
+@media (max-width: 480px) {
+  .serviceContainer {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .contentSide {
+    gap: 56px;
+  }
+
+  .serviceItem {
+    width: 100%;
+  }
+
+  .title {
+    font-size: 13px;
+    max-width: 170px;
+  }
+
+  .description {
+    font-size: 9px;
+    max-width: 200px;
+  }
+
+  .inlineImageDisplay {
+    min-height: 140px;
+  }
+
+  .inlineImage {
+    width: 64%;
+  }
+
+  .galleryContainer {
+    max-width: 170px;
+  }
+
+  .imageDisplay {
+    height: 120px;
+    min-height: 120px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
