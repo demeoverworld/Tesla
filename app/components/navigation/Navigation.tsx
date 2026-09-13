@@ -21,6 +21,7 @@ export function Navigation({ locale }: NavigationProps) {
   const t = useTranslations("Navigation");
   const pathname = usePathname();
   const isDashboardRoute = pathname?.startsWith(`/${locale}/dashboard`) ?? false;
+  const isPartsRoute = pathname?.startsWith(`/${locale}/parts`) ?? false;
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { data: session } = useSession();
@@ -65,8 +66,8 @@ export function Navigation({ locale }: NavigationProps) {
     session?.user?.name?.trim() || session?.user?.email?.split("@")[0] || "User";
 
   return (
-    <header className="absolute inset-x-0 top-0 z-20 px-4 md:px-12.5">
-      <nav className="flex w-full items-center justify-between py-6 text-white">
+    <header className={`absolute inset-x-0 top-0 z-20 px-4 md:px-12.5 ${isPartsRoute ? "text-red-500" : ""}`}>
+      <nav className={`flex w-full items-center justify-between py-6 ${isPartsRoute ? "text-red-500" : "text-white"}`}>
 
         <Link href={withLocale("/")} className="flex items-center">
           <Image src="/logo.png" alt="Logo" width={130} height={40} priority />
@@ -95,7 +96,7 @@ export function Navigation({ locale }: NavigationProps) {
               <button
                 type="button"
                 onClick={() => signOut({ callbackUrl: withLocale("/") })}
-                className="text-white/80 transition-colors hover:text-red-500"
+                className={`${isPartsRoute ? "text-red-500/80" : "text-white/80"} transition-colors hover:text-red-500`}
               >
                 Log out
               </button>
@@ -103,7 +104,7 @@ export function Navigation({ locale }: NavigationProps) {
           ) : (
             <Link
               href={withLocale("/auth/login")}
-              className="rounded-md border border-white/30 bg-black/30 px-4 py-1.5 text-sm font-medium transition-colors hover:border-red-500 hover:text-red-500"
+              className={`rounded-md border ${isPartsRoute ? "border-red-500/60 bg-red-500/10" : "border-white/30 bg-black/30"} px-4 py-1.5 text-sm font-medium transition-colors hover:border-red-500 hover:text-red-500`}
             >
               Login
             </Link>
@@ -113,7 +114,7 @@ export function Navigation({ locale }: NavigationProps) {
             <button
               type="button"
               onClick={() => setIsLanguageOpen((prev) => !prev)}
-              className="flex cursor-pointer items-center gap-2 rounded-md border border-white/30 bg-black/30 px-3 py-1.5 transition-colors hover:border-red-500"
+              className={`flex cursor-pointer items-center gap-2 rounded-md border px-3 py-1.5 transition-colors ${isPartsRoute ? "border-red-500/60 bg-red-500/10 hover:border-red-500" : "border-white/30 bg-black/30 hover:border-red-500"}`}
             >
               <img
                 src={activeLanguage.flagSrc}
@@ -139,7 +140,7 @@ export function Navigation({ locale }: NavigationProps) {
                     href={getLanguageHref(item.locale)}
                     onClick={() => setIsLanguageOpen(false)}
                     className={`flex items-center gap-2 rounded px-2 py-1.5 transition-colors hover:bg-white/10 hover:text-red-500 ${
-                      locale === item.locale ? "text-red-500" : "text-white"
+                      locale === item.locale ? "text-red-500" : isPartsRoute ? "text-red-500" : "text-white"
                     }`}
                   >
                     <img
@@ -220,7 +221,7 @@ export function Navigation({ locale }: NavigationProps) {
                   setIsMobileMenuOpen(false);
                   signOut({ callbackUrl: withLocale("/") });
                 }}
-                className="text-white/80 transition-colors hover:text-red-500"
+                className={`${isPartsRoute ? "text-red-500/80" : "text-white/80"} transition-colors hover:text-red-500`}
               >
                 Log out
               </button>
@@ -229,7 +230,7 @@ export function Navigation({ locale }: NavigationProps) {
             <Link
               href={withLocale("/auth/login")}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="block rounded-md border border-white/30 bg-black/30 px-3 py-2 text-center text-sm font-medium transition-colors hover:border-red-500 hover:text-red-500"
+              className={`block rounded-md border px-3 py-2 text-center text-sm font-medium transition-colors ${isPartsRoute ? "border-red-500/60 bg-red-500/10 hover:border-red-500 hover:text-red-500" : "border-white/30 bg-black/30 hover:border-red-500 hover:text-red-500"}`}
             >
               Login
             </Link>

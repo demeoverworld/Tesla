@@ -33,6 +33,12 @@
     "description": "Your car has navigation problems? No problem, we can get it fixed!",
     "reserve": "Reserve"
   },
+  "PartsPage": {
+    "partsRange": "Parts Range",
+    "range2016_2020": "2016-2020",
+    "range2020_2026": "2020-2026",
+    "noProducts": "No products for {range}."
+  },
   "Footer": {
     "contact": "Contact",
     "socials": "Socials",

@@ -6,11 +6,6 @@ import { useTranslations } from "next-intl";
 
 const contactNumbers = ["599757044", "599704155", "597050500"];
 const email = "Teslaservicetbilisi@gmail.com";
-const extraContacts = ["595900934", "595900934"];
-const extraContactsWithKeys = extraContacts.map((number, index) => ({
-  number,
-  key: `${number}-${index}`,
-}));
 
 const menuLabels = {
   en: {
@@ -49,7 +44,7 @@ export default function Footer({ locale }: FooterProps) {
 
   const mapAndPatent = (
     <>
-      <div className="Map">
+      <div className="Map overflow-hidden">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2981.796942179578!2d44.9079785760724!3d41.63852037126904!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40440d51b12dbdbd%3A0x47e2bd170fcd06b9!2sTesla%20Service%20Tbilisi!5e0!3m2!1ska!2sge!4v1756712610033!5m2!1ska!2sge"
           width="100%"
@@ -58,10 +53,11 @@ export default function Footer({ locale }: FooterProps) {
           allowFullScreen
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
+          className="grayscale hover:grayscale-0 transition-all duration-300"
         />
       </div>
       <div className="patent py-3 text-center">
-        <h3 className="text-black/55">© 2021 Tesla Service Tbilisi</h3>
+        <h3 className="text-black/55">© {new Date().getFullYear()} Tesla Service Tbilisi</h3>
       </div>
     </>
   );
@@ -81,7 +77,10 @@ export default function Footer({ locale }: FooterProps) {
         isReservePage ? "" : "bg-[url('/Red%20energy%20and%20motion.png')] bg-contain bg-no-repeat"
       }`}
     >
-      <div className="mx-auto flex min-h-[320px] max-w-7xl flex-col gap-8 px-6 py-12 sm:flex-row sm:items-center sm:justify-around">
+      {/* Improved mobile layout via responsive grid, switching back to your exact flex layout on sm: screens */}
+      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-x-6 gap-y-8 px-6 py-12 sm:flex sm:min-h-[320px] sm:flex-row sm:items-center sm:justify-around sm:gap-8">
+        
+        {/* Column 1 */}
         <div className="flex flex-col gap-3">
           <h4
             className={`border-b pb-2 text-base font-semibold ${
@@ -91,7 +90,7 @@ export default function Footer({ locale }: FooterProps) {
             {t("contact")}
           </h4>
 
-          {contactNumbers.map((number) => (
+          {contactNumbers.slice(0, 3).map((number) => (
             <Link
               key={number}
               href={`tel:${number}`}
@@ -106,6 +105,7 @@ export default function Footer({ locale }: FooterProps) {
           ))}
         </div>
 
+        {/* Column 2 */}
         <div className="flex flex-col gap-3">
           <h4 className="border-b border-black/30 pb-2 text-base font-semibold text-black">
             {t("contact")}
@@ -113,14 +113,14 @@ export default function Footer({ locale }: FooterProps) {
 
           <Link
             href={`mailto:${email}`}
-            className="text-sm text-black/55 transition-colors hover:text-black"
+            className="text-sm text-black/55 transition-colors hover:text-black break-all"
           >
             {email}
           </Link>
 
-          {extraContactsWithKeys.map(({ number, key }) => (
+          {contactNumbers.slice(0, 2).map((number, index) => (
             <Link
-              key={key}
+              key={`extra-${number}-${index}`}
               href={`tel:${number}`}
               className="text-sm text-black/55 transition-colors hover:text-black"
             >
@@ -129,6 +129,7 @@ export default function Footer({ locale }: FooterProps) {
           ))}
         </div>
 
+        {/* Column 3 */}
         <div className="flex flex-col gap-3">
           <h4 className="border-b border-black/30 pb-2 text-base font-semibold text-black">
             {t("socials")}
@@ -154,6 +155,7 @@ export default function Footer({ locale }: FooterProps) {
           ))}
         </div>
 
+        {/* Column 4 */}
         <div className="flex flex-col gap-3">
           <h4 className="border-b border-black/30 pb-2 text-base font-semibold text-black">
             {t("menu")}

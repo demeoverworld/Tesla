@@ -40,4 +40,20 @@ export const partModelConfig: readonly PartModelConfig[] = [
     categorySideImageSrc: "/tesla-y-side.png",
     categoryPartsImageSrc: "/model_Y_parts.png",
   },
+  {
+    slug: "cybertruck",
+    title: "Cybertruck",
+    imageSrc: "/thumbnail-cybertruck.jpg",
+    categoryImageSrc: "/tesla_cybertruck_2-HD-removebg-preview.png",
+    categorySideImageSrc: "/side-view-tesla-cyber-truck-600nw-2554319605-removebg-preview.png",
+    categoryPartsImageSrc: "/tesla_cybertruck_2-HD-removebg-preview.png",
+  },
+  {
+    slug: "roadster",
+    title: "Roadster",
+    imageSrc: "/thumbnail-roadster.jpg",
+    categoryImageSrc: "/front-view-roadster.png",
+    categorySideImageSrc: "/tesla-roadster_side_view-removebg-preview.png",
+    categoryPartsImageSrc: "/front-view-roadster.png",
+  },
 ];

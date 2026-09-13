@@ -27,6 +27,34 @@
   position: relative;
 }
 
+.mainCybertruck {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: linear-gradient(to bottom right, #555555, #ffffff);
+  border: 2px solid #c6c6c6;
+  overflow: hidden;
+  border-radius: 20px;
+  width: 300px;
+  height: 400px;
+  padding-left: 0;
+  position: relative;
+}
+
+.mainModelY {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: linear-gradient(to bottom right, #1a5bb8, #ffffff);
+  border: 2px solid #c6c6c6;
+  overflow: hidden;
+  border-radius: 20px;
+  width: 300px;
+  height: 400px;
+  padding-left: 0;
+  position: relative;
+}
+
 .mainImage {
   object-fit: contain;
   object-position: center bottom;
@@ -45,6 +73,15 @@
   height: 100%;
 }
 
+.mainImageCybertruck {
+  object-fit: cover;
+  transform: translateY(-8%);
+  transform: translateX(12%);
+  transition: 0.5s ease;
+  width: 120%;
+  height: 67.7%;
+}
+
 .mainCar {
   display: flex;
   transform: translateY(-57%);
@@ -52,13 +89,30 @@
   transition: 0.5s ease;
 }
 
+.mainCarCybertruck {
+  display: flex;
+  transform: translateY(-56%);
+  margin-bottom: -180px;
+  transition: 0.5s ease;
+}
+
 .mainCar:hover {
+  transform: translateY(-60%);
+}
+
+.mainCarCybertruck:hover {
   transform: translateY(-60%);
 }
 
 .mainCar img {
   width: 560px;
   height: 600px;
+  object-fit: contain;
+}
+
+.mainCarCybertruck img {
+  width: 600px;
+  height: 420px;
   object-fit: contain;
 }
 
@@ -70,6 +124,10 @@
 }
 
 @media screen and (max-width: 767px) {
+  .container {
+    display: none;
+  }
+
   .title h1 {
     font-size: 70px;
   }
