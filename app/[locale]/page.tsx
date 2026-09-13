@@ -30,7 +30,7 @@ export default async function LocalePage({ params }: LocalePageProps) {
         orderLabel={tHero("order")}
         locale={locale as Locale}
       />
-      <HeroCards />
+      <HeroCards locale={locale as Locale} />
       <InstallNavigation />
       <Carousel />
     </>

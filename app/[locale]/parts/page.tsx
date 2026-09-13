@@ -20,8 +20,8 @@ export default async function PartsPage({ params }: PartsPageProps) {
 
   return (
     <>
-      <PartsHero />
-      <section className="min-h-screen bg-[radial-gradient(circle_at_12%_18%,#ffffff_0%,#f1f3f5_36%,#e4e7eb_72%,#d8dde3_100%)] px-6 pb-14 pt-24 sm:px-10 lg:px-16">
+      <PartsHero locale={locale as Locale} />
+      <section id="parts-catalog" className="min-h-screen bg-[radial-gradient(circle_at_12%_18%,#ffffff_0%,#f1f3f5_36%,#e4e7eb_72%,#d8dde3_100%)] px-6 pb-14 pt-24 sm:px-10 lg:px-16">
         <div className="mx-auto max-w-[1700px]">
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
             {partModelConfig.map((category) => (

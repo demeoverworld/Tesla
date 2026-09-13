@@ -51,11 +51,11 @@ export function ExpandablePartsPanels({
     "model-3": [
       { id: "model-3-2017-2020", label: "2017-2020", min: 2017, max: 2020 },
       { id: "model-3-2021-2023", label: "2021-2023", min: 2021, max: 2023 },
-      { id: "model-3-2024-2026", label: "2024-2026", min: 2024, max: 2026 },
+      { id: "model-3-2024-2026", label: "2024-2026", sublabel: "Highland", min: 2024, max: 2026 },
     ],
     "model-y": [
       { id: "model-y-2019-2024", label: "2019-2024", min: 2019, max: 2024 },
-      { id: "model-y-2025-2026", label: "2025-2026", min: 2025, max: 2026 },
+      { id: "model-y-2025-2026", label: "2025-2026", sublabel: "Juniper", min: 2025, max: 2026 },
     ],
     cybertruck: [{ id: "cybertruck-2023-2026", label: "2023-2026", min: 2023, max: 2026 }],
     roadster: [{ id: "roadster-2026", label: "2026", min: 2026, max: 2026 }],
@@ -77,9 +77,9 @@ export function ExpandablePartsPanels({
   };
 
   const panelBaseButtonClass =
-    "group flex w-full max-w-[62.5rem] cursor-pointer flex-col items-center justify-center gap-4 rounded-t-[24px] border border-slate-300/80 bg-[linear-gradient(165deg,#ffffff_0%,#f5f7fa_58%,#edf1f6_100%)] px-6 py-8 text-slate-900 shadow-[0_16px_34px_rgba(30,41,59,0.12)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_42px_rgba(15,23,42,0.16)]";
+    "group flex w-full max-w-[62.5rem] cursor-pointer flex-col items-center justify-center gap-4 rounded-t-[30px] border border-slate-300/80 bg-[linear-gradient(165deg,#ffffff_0%,#f5f7fa_58%,#edf1f6_100%)] px-6 py-8 text-slate-900 shadow-[0_16px_34px_rgba(30,41,59,0.12)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_42px_rgba(15,23,42,0.16)]";
   const panelBaseContentClass =
-    "w-full max-w-[62.5rem] overflow-hidden rounded-b-[24px] border border-t-0 border-slate-300/80 bg-[linear-gradient(180deg,#f8fafc_0%,#eff3f8_100%)] transition-all duration-500";
+    "w-full max-w-[62.5rem] overflow-hidden rounded-b-[30px] border border-t-0 border-slate-300/80 bg-[linear-gradient(180deg,#f8fafc_0%,#eff3f8_100%)] transition-all duration-500";
 
   return (
     <div className="mx-auto flex w-full flex-col items-center gap-16 px-4 pb-12 sm:px-6">
@@ -112,6 +112,19 @@ export function ExpandablePartsPanels({
           (product) => product.year >= range.min && product.year <= range.max
         );
         const isExpanded = expandedPanels[range.id] ?? false;
+        const panelImageSrc =
+          (categorySlug === "model-s" && range.id === "model-s-2021-2026") ||
+          (categorySlug === "model-x" && range.id === "model-x-2021-2026") ||
+          (categorySlug === "model-3" && range.id === "model-3-2024-2026") ||
+          (categorySlug === "model-y" && range.id === "model-y-2025-2026")
+            ? categorySlug === "model-s"
+              ? "/model-s-2026.jpeg"
+              : categorySlug === "model-x"
+                ? "/model-x-2026.jpeg"
+                : categorySlug === "model-3"
+                  ? "/model-3-2026(juniper).jpg"
+                  : "/model-y-2026.jpeg"
+            : categoryPartsImageSrc;
 
         return (
           <div key={range.id} className="w-full max-w-[62.5rem]">
@@ -122,16 +135,23 @@ export function ExpandablePartsPanels({
               aria-expanded={isExpanded}
             >
               <img
-                src={categoryPartsImageSrc}
+                src={panelImageSrc}
                 alt={categoryTitle}
-                className="h-auto w-56 transition-transform duration-300 group-hover:scale-[1.03] sm:w-72"
+                className="h-auto w-56 rounded-[26px] object-cover transition-transform duration-300 group-hover:scale-[1.03] sm:w-72"
               />
               <div className="flex items-center gap-3">
                 <span className="text-[0.72rem] font-semibold uppercase tracking-[0.26em] text-slate-500">
                   {t("partsRange")}
                 </span>
                 <span className="h-px w-10 bg-slate-400/60" />
-                <span className="text-lg font-semibold tracking-[0.06em] text-slate-900">{range.label}</span>
+                <span className="flex items-baseline gap-2 text-lg font-semibold tracking-[0.06em] text-slate-900">
+                  <span>{range.label}</span>
+                  {"sublabel" in range && range.sublabel ? (
+                    <span className="text-sm font-medium tracking-[0.12em] text-slate-500">
+                      {range.sublabel}
+                    </span>
+                  ) : null}
+                </span>
               </div>
               <span
                 className={`text-sm text-slate-500 transition-transform duration-300 ${
