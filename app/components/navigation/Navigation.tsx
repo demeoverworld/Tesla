@@ -25,6 +25,7 @@ export function Navigation({ locale }: NavigationProps) {
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { data: session } = useSession();
+  const isAdmin = (session?.user as { role?: string } | undefined)?.role === "admin";
 
   const navItems = [
     { label: t("home"), href: "/" },
@@ -87,6 +88,18 @@ export function Navigation({ locale }: NavigationProps) {
                 </Link>
               </li>
             ))}
+            {isAdmin && (
+              <li>
+                <Link
+                  href={withLocale("/dashboard")}
+                  className={`relative pb-1 transition-colors after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 hover:after:scale-x-100 ${
+                    isDashboardRoute ? "text-red-500" : "hover:text-red-500"
+                  }`}
+                >
+                  Dashboard
+                </Link>
+              </li>
+            )}
           </ul>
 
           {session ? (
@@ -208,6 +221,21 @@ export function Navigation({ locale }: NavigationProps) {
                 </Link>
               </li>
             ))}
+            {isAdmin && (
+              <li>
+                <Link
+                  href={withLocale("/dashboard")}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`block rounded px-2 py-2 transition-colors ${
+                    isDashboardRoute
+                      ? "text-red-500"
+                      : "text-white hover:bg-white/10 hover:text-red-500"
+                  }`}
+                >
+                  Dashboard
+                </Link>
+              </li>
+            )}
           </ul>
 
           <div className="my-4 h-px bg-white/20" aria-hidden="true" />

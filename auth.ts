@@ -30,17 +30,42 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
   callbacks: {
     async jwt({ token, user }) {
-      if (user) {
-        token.name = user.name ?? token.name;
-        token.email = user.email ?? token.email;
+      if (user?.email) {
+        const dbUser = await db?.query.users.findFirst({
+          where: eq(users.email, String(user.email)),
+        });
+
+        if (dbUser) {
+          token.role = dbUser.role;
+          token.name = user.name ?? dbUser.name ?? token.name;
+          token.email = user.email ?? dbUser.email ?? token.email;
+        } else {
+          token.name = user.name ?? token.name;
+          token.email = user.email ?? token.email;
+        }
+      }
+
+      if (!token.role && token.email && db) {
+        const dbUser = await db.query.users.findFirst({
+          where: eq(users.email, String(token.email)),
+        });
+
+        if (dbUser) {
+          token.role = dbUser.role;
+        }
       }
 
       return token;
     },
     async session({ session, token }) {
       if (session.user) {
-        session.user.name = token.name;
-        session.user.email = token.email ?? session.user.email ?? "";
+        const sessionUser = session.user as typeof session.user & {
+          role?: "user" | "admin";
+        };
+
+        sessionUser.name = token.name;
+        sessionUser.email = token.email ?? sessionUser.email ?? "";
+        sessionUser.role = token.role as "user" | "admin" | undefined;
       }
 
       return session;
