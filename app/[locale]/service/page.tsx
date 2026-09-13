@@ -68,73 +68,73 @@ export default async function ServicePage({ params }: ServicePageProps) {
         <div className="mx-auto max-w-7xl">
           <div className={styles.serviceContainer}>
             <div className={`${styles.contentSide} contentSide`}>
-            <div className={styles.serviceItem} data-index={0}>
-              <h2 className={styles.title}>General diagnostics of the car</h2>
-              <p className={styles.description}>
-                We use advanced diagnostic tools to check your vehicle's
-                systems and ensure all components are operating correctly.
-              </p>
-              <div className={styles.inlineImageDisplay}>
-                <img
-                  src={leftServiceImageUrls.climate}
-                  alt="General diagnostics of the car"
-                  className={styles.inlineImage}
-                />
+              <div className={styles.serviceItem} data-index={0}>
+                <h2 className={styles.title}>General diagnostics of the car</h2>
+                <p className={styles.description}>
+                  We use advanced diagnostic tools to check your vehicle's
+                  systems and ensure all components are operating correctly.
+                </p>
+                <div className={styles.inlineImageDisplay}>
+                  <img
+                    src={leftServiceImageUrls.climate}
+                    alt="General diagnostics of the car"
+                    className={styles.inlineImage}
+                  />
+                </div>
               </div>
-            </div>
 
-            <div className={styles.serviceItem} data-index={1}>
-              <h2 className={styles.title}>Car key pairing or installation</h2>
-              <p className={styles.description}>
-                We can pair keys to your car and also your phone.
-              </p>
-              <div className={styles.inlineImageDisplay}>
-                <img
-                  src={leftServiceImageUrls.keys}
-                  alt="Car key pairing or installation"
-                  className={styles.inlineImage}
-                />
+              <div className={styles.serviceItem} data-index={1}>
+                <h2 className={styles.title}>Car key pairing or installation</h2>
+                <p className={styles.description}>
+                  We can pair keys to your car and also your phone.
+                </p>
+                <div className={styles.inlineImageDisplay}>
+                  <img
+                    src={leftServiceImageUrls.keys}
+                    alt="Car key pairing or installation"
+                    className={styles.inlineImage}
+                  />
+                </div>
               </div>
-            </div>
 
-            <div className={styles.serviceItem} data-index={2}>
-              <h2 className={styles.title}>Battery check and repair</h2>
-              <p className={styles.description}>
-                As part of our diagnostic process, we thoroughly test the
-                battery system and carry out repairs or servicing if required.
-              </p>
-              <div className={styles.inlineImageDisplay}>
-                <img
-                  src={leftServiceImageUrls.display}
-                  alt="Battery check and repair"
-                  className={styles.inlineImage}
-                />
+              <div className={styles.serviceItem} data-index={2}>
+                <h2 className={styles.title}>Battery check and repair</h2>
+                <p className={styles.description}>
+                  As part of our diagnostic process, we thoroughly test the
+                  battery system and carry out repairs or servicing if required.
+                </p>
+                <div className={styles.inlineImageDisplay}>
+                  <img
+                    src={leftServiceImageUrls.display}
+                    alt="Battery check and repair"
+                    className={styles.inlineImage}
+                  />
+                </div>
               </div>
-            </div>
 
-            <div className={styles.serviceItem} data-index={3}>
-              <h2 className={styles.title}>Navigation setup or installation</h2>
-              <p className={styles.description}>
-                We configure and update vehicle navigation systems to ensure
-                accurate routing, optimal performance, and seamless operation.
-              </p>
-              <div className={styles.inlineImageDisplay}>
-                <img
-                  src={leftServiceImageUrls.navigation}
-                  alt="Navigation setup or installation"
-                  className={styles.inlineImage}
-                />
+              <div className={styles.serviceItem} data-index={3}>
+                <h2 className={styles.title}>Navigation setup or installation</h2>
+                <p className={styles.description}>
+                  We configure and update vehicle navigation systems to ensure
+                  accurate routing, optimal performance, and seamless operation.
+                </p>
+                <div className={styles.inlineImageDisplay}>
+                  <img
+                    src={leftServiceImageUrls.navigation}
+                    alt="Navigation setup or installation"
+                    className={styles.inlineImage}
+                  />
+                </div>
               </div>
-            </div>
 
-            <div className={styles.serviceItem} data-index={4}>
-              <h2 className={styles.title}>
-                You can purchase spare parts,that we provide
-              </h2>
-              <p className={styles.description}>
-                Feel free to shop on our website!
-              </p>
-            </div>
+              <div className={styles.serviceItem} data-index={4}>
+                <h2 className={styles.title}>
+                  You can purchase spare parts,that we provide
+                </h2>
+                <p className={styles.description}>
+                  Feel free to shop on our website!
+                </p>
+              </div>
 
             </div>
 

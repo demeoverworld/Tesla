@@ -62,11 +62,11 @@
 }
 
 .inlineImage {
-      width: 30%;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-    border-radius: 16px;
-    transform: scale(0.97);
-    transition: transform 0.45s ease;
+  width: 30%;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border-radius: 16px;
+  transform: scale(0.97);
+  transition: transform 0.45s ease;
 }
 
 .serviceItem[data-visible="true"] .inlineImageDisplay {
@@ -138,13 +138,17 @@
   }
 
   .contentSide {
-    gap: 120px;
+    gap: 150px;
     padding: 12px 0;
   }
 
   .serviceItem {
     width: 70%;
     gap: 12px;
+  }
+
+  .serviceItem:not(:last-child) {
+    margin-bottom: 36px;
   }
 
   .title {
@@ -159,7 +163,8 @@
   }
 
   .inlineImage {
-    width: 42%;
+    width: 74%;
+    max-height: 150px;
   }
 }
 
@@ -170,7 +175,7 @@
   }
 
   .contentSide {
-    gap: 72px;
+    gap: 250px;
     padding: 8px 0;
   }
 
@@ -179,8 +184,8 @@
     gap: 10px;
   }
 
-  .inlineImageDisplay {
-    min-height: 180px;
+  .serviceItem:not(:last-child) {
+    margin-bottom: 124px;
   }
 
   .gallerySide {
@@ -211,7 +216,8 @@
   }
 
   .inlineImage {
-    width: 54%;
+    width: 82%;
+    margin-top: 10px;
   }
 }
 
@@ -222,11 +228,15 @@
   }
 
   .contentSide {
-    gap: 56px;
+    gap: 72px;
   }
 
   .serviceItem {
     width: 100%;
+  }
+
+  .serviceItem:not(:last-child) {
+    margin-bottom: 16px;
   }
 
   .title {
@@ -239,12 +249,10 @@
     max-width: 200px;
   }
 
-  .inlineImageDisplay {
-    min-height: 140px;
-  }
-
   .inlineImage {
-    width: 64%;
+    width: 52%;
+    max-height: 170px;
+    margin-top: 8px;
   }
 
   .galleryContainer {
@@ -260,7 +268,6 @@
 @media (prefers-reduced-motion: reduce) {
   .title,
   .description,
-  .inlineImageDisplay,
   .inlineImage {
     transition: none;
     opacity: 1;
