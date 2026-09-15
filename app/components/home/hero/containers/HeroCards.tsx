@@ -17,11 +17,13 @@ export function HeroCards({ locale }: HeroCardsProps) {
       header: tHero("card1Title"),
       description: tHero("card1Description"),
       href: `/${locale}/parts`,
+      image: "/tesla_parts.jpeg",
     },
     {
       header: tHero("card2Title"),
       description: tHero("card2Description"),
       href: `/${locale}/service`,
+      image: "/serv.jpg",
     },
   ];
 
@@ -48,7 +50,7 @@ export function HeroCards({ locale }: HeroCardsProps) {
               </div>
               <div className="relative h-40 w-32 shrink-0 overflow-hidden rounded-xl sm:h-44 sm:w-36">
                 <Image
-                  src="/serv.jpg"
+                  src={card.image}
                   alt={tHero("missingPartsAlt")}
                   fill
                   className="object-cover"
