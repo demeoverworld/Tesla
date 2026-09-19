@@ -141,7 +141,7 @@
         },
         "stock": {
           "name": "stock",
-          "type": "integer",
+          "type": "boolean",
           "primaryKey": false,
           "notNull": true
         },

@@ -1,1 +1,1 @@
-ALTER TABLE "product" ADD COLUMN "stock" integer NOT NULL;
+ALTER TABLE "product" ADD COLUMN "stock" boolean NOT NULL DEFAULT false;

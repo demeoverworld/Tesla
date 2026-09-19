@@ -13,7 +13,7 @@ type ProductFormProps = {
     year: number;
     model: string;
     price: number;
-    stock: number;
+    stock: boolean;
     desc: string;
     photo: string;
   };
@@ -126,23 +126,17 @@ export function ProductForm({ locale, productId, existingProduct }: ProductFormP
             </label>
           </div>
 
-          <h2 className="">Stock</h2>
-          <div className="relative w-72">
+          <h2 className="">In Stock</h2>
+          <div className="relative w-72 flex items-center gap-2">
             <input
               id="product-stock"
               name="stock"
-              type="number"
-              min={0}
-              defaultValue={existingProduct?.stock || ""}
-              required
-              className="peer w-72 rounded-md border border-red-500 bg-white px-3 pb-1.5 pt-3 text-sm text-red-700 placeholder-transparent outline-none transition-colors hover:border-red-600 hover:bg-red-50/30 focus:border-red-600 focus:ring-2 focus:ring-red-200"
-              placeholder="Enter product stock"
+              type="checkbox"
+              defaultChecked={existingProduct?.stock || false}
+              className="h-4 w-4 rounded border border-red-500 text-red-600"
             />
-            <label
-              htmlFor="product-stock"
-              className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 bg-white px-1 text-xs text-red-300 transition-all peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:text-[10px] peer-focus:text-red-500 peer-[&:not(:placeholder-shown)]:top-0 peer-[&:not(:placeholder-shown)]:-translate-y-1/2 peer-[&:not(:placeholder-shown)]:text-[10px] peer-[&:not(:placeholder-shown)]:text-red-500"
-            >
-              Enter product stock
+            <label htmlFor="product-stock" className="text-sm text-red-700">
+              Available
             </label>
           </div>
 

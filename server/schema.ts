@@ -72,7 +72,7 @@ export const products = pgTable("product", {
   year: integer("year").notNull(),
   model: text("model").notNull(),
   price: integer("price").notNull(),
-  stock: integer("stock").notNull(),
+  stock: boolean("stock").notNull(),
   desc: text("desc").notNull(),
   photo: text("photo").notNull(),
 });

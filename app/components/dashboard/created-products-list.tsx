@@ -9,7 +9,7 @@ type Product = {
   year: number;
   model: string;
   price: number;
-  stock: number;
+  stock: boolean;
   desc: string;
   photo: string;
 };
@@ -51,7 +51,7 @@ export function CreatedProductsList({ products, locale }: CreatedProductsListPro
             {product.model} • {product.year}
           </p>
           <p className="text-sm text-black/70">
-            Price: ${product.price} • Stock: {product.stock}
+            Price: ₾{product.price} • {product.stock ? "In stock" : "Out of stock"}
           </p>
           <div className="mt-3 flex gap-2">
             <button
