@@ -96,12 +96,26 @@ export function PartCard({ product }: PartCardProps) {
 				className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-6"
 				onClick={() => setIsOpen(false)}
 			>
-				<img
-					src={isValidPhotoSrc && !loadError ? photoSrc : "/placeholder.png"}
-					alt={product.name}
-					onClick={(e) => e.stopPropagation()}
-					className="max-h-[90vh] max-w-[90vw] object-contain rounded-none shadow-lg"
-				/>
+				<div className="relative">
+					<button
+						type="button"
+						aria-label="Close image"
+						onClick={(e) => {
+							e.stopPropagation();
+							setIsOpen(false);
+						}}
+						className="absolute -right-3 -top-3 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-black/60 text-2xl font-light text-white shadow-lg transition hover:bg-red-600 hover:text-white focus:outline-none"
+					>
+						×
+					</button>
+
+					<img
+						src={isValidPhotoSrc && !loadError ? photoSrc : "/placeholder.png"}
+						alt={product.name}
+						onClick={(e) => e.stopPropagation()}
+						className="max-h-[90vh] max-w-[90vw] object-contain rounded-none shadow-lg"
+					/>
+				</div>
 			</div>
 		, document.body)}
 		</>
